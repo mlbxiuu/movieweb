@@ -1,0 +1,421 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MovieWebsite.bundle.scp.css",
+      "PackagePath": "staticwebassets\\MovieWebsite.xtx6dbd3sz.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250608.log",
+      "PackagePath": "staticwebassets\\Logs\\app-20250608.log"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250609.log",
+      "PackagePath": "staticwebassets\\Logs\\app-20250609.log"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250610.log",
+      "PackagePath": "staticwebassets\\Logs\\app-20250610.log"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250611.log",
+      "PackagePath": "staticwebassets\\Logs\\app-20250611.log"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250614.log",
+      "PackagePath": "staticwebassets\\Logs\\app-20250614.log"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250615.log",
+      "PackagePath": "staticwebassets\\Logs\\app-20250615.log"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250617.log",
+      "PackagePath": "staticwebassets\\Logs\\app-20250617.log"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\episode_1_98b0941e-9e66-42d9-b03f-317d1182446a.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\episode_1_98b0941e-9e66-42d9-b03f-317d1182446a.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_46d6ecf1-2678-40de-a437-1438b30ecc97.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\poster_46d6ecf1-2678-40de-a437-1438b30ecc97.jpg"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_61357853-8c68-4c3f-a478-fbc9bb697835.png",
+      "PackagePath": "staticwebassets\\Uploads\\poster_61357853-8c68-4c3f-a478-fbc9bb697835.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_648067f0-6707-4d26-84ae-fae92973e606.png",
+      "PackagePath": "staticwebassets\\Uploads\\poster_648067f0-6707-4d26-84ae-fae92973e606.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_6e9b276d-6f1a-4214-bcc0-a6af81c8a9ed.png",
+      "PackagePath": "staticwebassets\\Uploads\\poster_6e9b276d-6f1a-4214-bcc0-a6af81c8a9ed.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_7ee73feb-fb87-412b-a0b7-17588b0309e8.png",
+      "PackagePath": "staticwebassets\\Uploads\\poster_7ee73feb-fb87-412b-a0b7-17588b0309e8.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_973d4420-46e9-415e-8cdf-91d61f280815.png",
+      "PackagePath": "staticwebassets\\Uploads\\poster_973d4420-46e9-415e-8cdf-91d61f280815.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_bb689816-b68b-4677-acba-c8c4e6b99267.png",
+      "PackagePath": "staticwebassets\\Uploads\\poster_bb689816-b68b-4677-acba-c8c4e6b99267.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\trailer_27ba4817-0e66-4f48-b9d2-700e92bc98a1.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\trailer_27ba4817-0e66-4f48-b9d2-700e92bc98a1.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\trailer_68417ab5-71f4-4e0e-94fc-c742af75e97e.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\trailer_68417ab5-71f4-4e0e-94fc-c742af75e97e.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\trailer_7f1648b2-93cf-47af-90a3-9f0df29b2d0a.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\trailer_7f1648b2-93cf-47af-90a3-9f0df29b2d0a.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\trailer_92aa7592-1f99-4c5e-a9b8-5bba8506e6a8.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\trailer_92aa7592-1f99-4c5e-a9b8-5bba8506e6a8.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\trailer_ea9545b5-2153-412c-bfb7-2d17762ab924.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\trailer_ea9545b5-2153-412c-bfb7-2d17762ab924.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\trailer_ee304cbf-d73e-40df-8374-f6670a5c5986.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\trailer_ee304cbf-d73e-40df-8374-f6670a5c5986.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\admin_wow.css",
+      "PackagePath": "staticwebassets\\css\\admin_wow.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\footer.css",
+      "PackagePath": "staticwebassets\\css\\footer.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\genre.css",
+      "PackagePath": "staticwebassets\\css\\genre.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\genre1.css",
+      "PackagePath": "staticwebassets\\css\\genre1.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\home1.css",
+      "PackagePath": "staticwebassets\\css\\home1.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\navigation.css",
+      "PackagePath": "staticwebassets\\css\\navigation.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\images\\1.png",
+      "PackagePath": "staticwebassets\\images\\1.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\images\\3.png",
+      "PackagePath": "staticwebassets\\images\\3.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\images\\4.png",
+      "PackagePath": "staticwebassets\\images\\4.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\images\\5.png",
+      "PackagePath": "staticwebassets\\images\\5.png"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\videos\\1.mp4",
+      "PackagePath": "staticwebassets\\videos\\1.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\videos\\2.mp4",
+      "PackagePath": "staticwebassets\\videos\\2.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\videos\\3.mp4",
+      "PackagePath": "staticwebassets\\videos\\3.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\videos\\4.mp4",
+      "PackagePath": "staticwebassets\\videos\\4.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\videos\\5.mp4",
+      "PackagePath": "staticwebassets\\videos\\5.mp4"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MovieWebsite.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MovieWebsite.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.MovieWebsite.props",
+      "PackagePath": "build\\MovieWebsite.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.MovieWebsite.props",
+      "PackagePath": "buildMultiTargeting\\MovieWebsite.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.MovieWebsite.props",
+      "PackagePath": "buildTransitive\\MovieWebsite.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

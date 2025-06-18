@@ -1,0 +1,641 @@
+@* @model MovieSearchViewModel
+@{
+    ViewBag.Title = "CineViet - Xem Phim Online Miễn Phí";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        .nav-menu a:hover {
+            color: #ff6b6b;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            padding: 0.5rem;
+            width: 200px;
+        }
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            border-radius: 10px;
+            margin-top: 5px;
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .search-result-item {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        /* Hero Banner */
+                .hero-banner {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        /* Movie Sections */
+        .movie-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title-small {
+            font-size: 2rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .country-flag {
+            width: 40px;
+            height: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .view-all {
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .view-all:hover {
+            color: #ff6b6b;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .movie-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        .movie-poster {
+            height: 280px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .movie-info {
+            padding: 1rem;
+        }
+        .movie-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .movie-year {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0c0c0c 100%);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: #4ecdc4;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: #4ecdc4;
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        /* Animations */
+        @@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Loading spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @@keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+        /* Responsive */
+        @@media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .movie-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .search-box {
+                width: 150px;
+            }
+            .search-box input {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1 class="hero-title">Khám Phá Thế Giới Điện Ảnh</h1>
+            <p class="hero-subtitle">Hàng ngàn bộ phim hay nhất từ khắp nơi trên thế giới</p>
+            <div class="hero-buttons">
+                <a href="#movies" class="btn btn-primary">
+                    <i class="fas fa-play"></i>
+                    Xem Ngay
+                </a>
+                <a href="/Movies" class="btn btn-secondary">
+                    <i class="fas fa-list"></i>
+                    Danh Sách Phim
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Movies Section -->
+    @if (Model.Movies.Any())
+    {
+        <section class="movie-section" id="movies">
+            <div class="section-header">
+                <h2 class="section-title">Phim Mới Nhất</h2>
+                <a href="/Movies" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movie-grid">
+                @foreach (var movie in Model.Movies.Take(12))
+                {
+                    <div class="movie-card" onclick="location.href='/Movies/Details/@movie.Id'">
+                        <div class="movie-poster">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img src="@movie.PosterPath" alt="@movie.Title" />
+                            }
+                            else
+                            {
+                                <i class="fas fa-film"></i>
+                            }
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">@movie.Title</h3>
+                            <p class="movie-year">@movie.ReleaseYear</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+
+    <!-- Korean Movies Section -->
+    @{
+        var koreanMovies = Model.Movies.Where(m => Model.Countries.Any(c => c.Id == m.CountryId && c.Code == "KR")).Take(8).ToList();
+    }
+    @if (koreanMovies.Any())
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title-small">
+                    <div class="country-flag">🇰🇷</div>
+                    Phim Hàn Quốc Mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "KR")?.Id)" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movie-grid">
+                @foreach (var movie in koreanMovies)
+                {
+                    <div class="movie-card" onclick="location.href='/Movies/Details/@movie.Id'">
+                        <div class="movie-poster">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img src="@movie.PosterPath" alt="@movie.Title" />
+                            }
+                            else
+                            {
+                                <i class="fas fa-film"></i>
+                            }
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">@movie.Title</h3>
+                            <p class="movie-year">@movie.ReleaseYear</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title-small">
+                    <div class="country-flag">🇰🇷</div>
+                    Phim Hàn Quốc Mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "KR")?.Id)" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="empty-state">
+                <i class="fas fa-film"></i>
+                <p>Không có phim Hàn Quốc nào hiện tại</p>
+            </div>
+        </section>
+    }
+
+    <!-- Chinese Movies Section -->
+    @{
+        var chineseMovies = Model.Movies.Where(m => Model.Countries.Any(c => c.Id == m.CountryId && c.Code == "CN")).Take(8).ToList();
+    }
+    @if (chineseMovies.Any())
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title-small">
+                    <div class="country-flag">🇨🇳</div>
+                    Phim Trung Quốc Mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "CN")?.Id)" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movie-grid">
+                @foreach (var movie in chineseMovies)
+                {
+                    <div class="movie-card" onclick="location.href='/Movies/Details/@movie.Id'">
+                        <div class="movie-poster">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img src="@movie.PosterPath" alt="@movie.Title" />
+                            }
+                            else
+                            {
+                                <i class="fas fa-film"></i>
+                            }
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">@movie.Title</h3>
+                            <p class="movie-year">@movie.ReleaseYear</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title-small">
+                    <div class="country-flag">🇨🇳</div>
+                    Phim Trung Quốc Mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "CN")?.Id)" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="empty-state">
+                <i class="fas fa-film"></i>
+                <p>Không có phim Trung Quốc nào hiện tại</p>
+            </div>
+        </section>
+    }
+
+    <!-- US-UK Movies Section -->
+    @{
+        var westernMovies = Model.Movies.Where(m => Model.Countries.Any(c => c.Id == m.CountryId && (c.Code == "US" || c.Code == "UK"))).Take(8).ToList();
+    }
+    @if (westernMovies.Any())
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title-small">
+                    <div class="country-flag">🇺🇸</div>
+                    Phim Mỹ - Anh Mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "US")?.Id)" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movie-grid">
+                @foreach (var movie in westernMovies)
+                {
+                    <div class="movie-card" onclick="location.href='/Movies/Details/@movie.Id'">
+                        <div class="movie-poster">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img src="@movie.PosterPath" alt="@movie.Title" />
+                            }
+                            else
+                            {
+                                <i class="fas fa-film"></i>
+                            }
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">@movie.Title</h3>
+                            <p class="movie-year">@movie.ReleaseYear</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title-small">
+                    <div class="country-flag">🇺🇸</div>
+                    Phim Mỹ - Anh Mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "US")?.Id)" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="empty-state">
+                <i class="fas fa-film"></i>
+                <p>Không có phim Mỹ - Anh nào hiện tại</p>
+            </div>
+        </section>
+    }
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về CineViet</h3>
+                <p>CineViet - Nơi mang đến cho bạn những bộ phim chất lượng cao từ khắp nơi trên thế giới, hoàn toàn miễn phí.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Kết Nhanh</h3>
+                <ul>
+                    <li><a href="/">Trang Chủ</a></li>
+                    <li><a href="/Movies">Phim Lẻ</a></li>
+                    <li><a href="/Series">Phim Bộ</a></li>
+                    <li><a href="/Genres">Thể Loại</a></li>
+                    <li><a href="/Countries">Quốc Gia</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <p>Email: support@cineviet.com</p>
+                <p>Hotline: (+84) 123 456 789</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; @DateTime.Now.Year CineViet. All rights reserved.</p>
+        </div>
+    </footer>
+
+   
+</body>
+</html> *@

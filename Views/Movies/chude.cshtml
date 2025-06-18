@@ -1,0 +1,347 @@
+@{
+    // Sample topic data (in a real app, this would come from the backend)
+    var topics = new List<(string Title, string Url, string Color)> {
+        ("Marvel", "/c/marvel-sieu-anh-hung.vhyYAW", "rgb(50, 79, 209)"),
+        ("Keo Lỳ Slayyy", "/c/keo-ly-slayyy.oEi49P", "rgb(150, 22, 209)"),
+        ("Sitcom", "/c/sitcom-series-us.SosVge", "rgb(27, 133, 108)"),
+        ("4K", "/c/4k.bZE4Tf", "rgb(102, 102, 153)"),
+        ("Lồng Tiếng Cực Mạnh", "/c/long-tieng-cuc-manh.PGxRUU", "rgb(119, 97, 180)"),
+        ("Đỉnh Nóc", "/c/dinh-noc.HqM5a6", "rgb(33, 138, 143)"),
+        ("Xuyên Không", "/c/xuyen-khong.3TQ3S1", "rgb(205, 126, 95)"),
+        ("9x", "/c/kinh-dien-thoi-9x.izFfk3", "rgb(74, 169, 65)"),
+        ("Cổ Trang", "/c/co-trang.wCSzYH", "rgb(167, 57, 57)"),
+        ("Tham Vọng", "/c/tham-vong-suc-soi.RTO2R0", "rgb(167, 35, 112)"),
+        ("Chữa Lành", "/c/chua-lanh.yFH2M1", "rgb(237, 110, 159)"),
+        ("Phù Thủy", "/c/dam-minh-vao-the-gioi-phu-thuy.vflgP7", "rgb(186, 59, 124)")
+    };
+
+    // Sample social media data
+    var socials = new List<(string Platform, string Url, string IconPath, string Title)> {
+        ("Telegram", "https://t.me/rophimzone", "/images/social/telegram-icon.svg", "Telegram"),
+        ("Discord", "https://discord.gg/rophim", "/images/social/discord-icon.svg", "Discord"),
+        ("X", "https://x.com/rophimtv", "/images/social/x-icon.svg", "X"),
+        ("Facebook", "https://www.facebook.com/rophimorg/", "/images/social/facebook-icon.svg", "Facebook"),
+        ("TikTok", "https://www.tiktok.com/@rophimtv", "/images/social/tiktok-icon.svg", "TikTok"),
+        ("YouTube", "https://www.youtube.com/@rophimcom", "/images/social/youtube-icon.svg", "YouTube"),
+        ("Threads", "https://www.threads.net/@rophimtv", "/images/social/threads-icon.svg", "Threads"),
+        ("Instagram", "https://www.instagram.com/rophimtv", "/images/social/instagram-icon.svg", "Instagram")
+    };
+
+    // Footer menu data
+    var footerMenus = new List<(string Title, string Url)> {
+        ("Hỏi-Đáp", "/hoi-dap"),
+        ("Chính sách bảo mật", "/chinh-sach-bao-mat"),
+        ("Điều khoản sử dụng", "/dieu-khoan-su-dung"),
+        ("Giới thiệu", "/gioi-thieu"),
+        ("Liên hệ", "/lien-he"),
+        ("Dongphim", "/dongphim"),
+        ("Ghienphim", "/ghienphim"),
+        ("Motphim", "/motphim"),
+        ("Subnhanh", "/subnhanh")
+    };
+}
+
+<style>
+    /* Topics Section */
+    .topics-section {
+        margin-bottom: 40px;
+    }
+
+    .topics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .row-topic {
+        position: relative;
+        display: block;
+        text-decoration: none;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s;
+    }
+
+    .row-topic:hover {
+        transform: translateY(-5px);
+    }
+
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        z-index: 1;
+    }
+
+    .intro {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+        color: #FFFFFF;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .heading-md {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .btn-outline {
+        background: transparent;
+        border: 1px solid #FFFFFF;
+        color: #FFFFFF;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover {
+        background: #FFFFFF;
+        color: #1A1B29;
+    }
+
+    /* Footer Section */
+    .footer {
+        background-color: #1A1B29;
+        padding: 40px 0;
+        color: #D0D0D0;
+        border-top: 1px solid #333642;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .footer-elements {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-icon img {
+        width: 100px;
+        margin-bottom: 20px;
+    }
+
+    .true {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .line-center {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .inc-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .inc-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .sl-brand {
+        margin-bottom: 20px;
+    }
+
+    .footer-logo img {
+        width: 120px;
+    }
+
+    .socials {
+        margin-top: 15px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .social-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #4C4F62;
+        transition: background 0.2s;
+    }
+
+    .social-item:hover {
+        background: #FFC107;
+    }
+
+    .social-item .inc-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .sl-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .sl-menu a {
+        color: #D0D0D0;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+    }
+
+    .sl-menu a:hover {
+        color: #FFC107;
+    }
+
+    .sl-notice {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .sl-copyright {
+        font-size: 0.8rem;
+        color: #9C9C9C;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .topics-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .row-topic {
+            min-height: 120px;
+        }
+
+        .heading-md {
+            font-size: 1.2rem;
+        }
+
+        .btn-outline {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+        }
+
+        .footer-elements {
+            text-align: center;
+        }
+
+        .true, .sl-brand, .socials, .sl-menu {
+            justify-content: center;
+        }
+
+        .footer-logo img {
+            margin: 0 auto;
+        }
+    }
+</style>
+
+<!-- Topics Section -->
+<section class="topics-section makeup">
+    <div class="fluid-gap">
+        <div class="cards-row wide">
+            <header class="row-header">
+                <h3 class="category-name me-3">Các chủ đề</h3>
+            </header>
+            <div class="row-content">
+                <div class="topics-list topics-grid">
+                    @foreach (var topic in topics)
+                    {
+                        <a class="row-topic" href="@topic.Url" aria-label="Xem chủ đề @topic.Title">
+                            <div class="mask" style="background-color: @topic.Color;"></div>
+                            <div class="intro">
+                                <h4 class="heading-md lim-2 mb-0">@topic.Title</h4>
+                                <div class="info">
+                                    <div class="btn btn-sm btn-outline">
+                                        <span>Xem toàn bộ</span>
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-elements">
+            <div class="footer-icon">
+                <img src="/images/footer-icon.svg" alt="RoPhim Footer Icon">
+            </div>
+            <div class="side-left">
+                <div class="true">
+                    <div class="line-center">
+                        <div class="inc-icon icon-20">
+                            <img src="/images/vn_flag.svg" alt="Vietnam Flag">
+                        </div>
+                        <span>Hoàng Sa & Trường Sa là của Việt Nam!</span>
+                    </div>
+                </div>
+                <div class="sl-brand line-center">
+                    <a class="footer-logo" href="/phimhay" aria-label="RoPhim Home">
+                        <img src="/images/logo.svg" alt="RoPhim Logo">
+                    </a>
+                    <div class="socials line-center">
+                        @foreach (var social in socials)
+                        {
+                            <a class="social-item" target="_blank" href="@social.Url" title="@social.Title" aria-label="Follow us on @social.Title">
+                                <div class="inc-icon icon-14">
+                                    <img src="@social.IconPath" alt="@social.Title Icon">
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+                <nav class="sl-menu mb-3" aria-label="Footer Navigation">
+                    @foreach (var menu in footerMenus.Take(5)) // First menu group
+                    {
+                        <a title="@menu.Title" href="@menu.Url">@menu.Title</a>
+                    }
+                </nav>
+                <nav class="sl-menu mb-3" aria-label="Partner Sites">
+                    @foreach (var menu in footerMenus.Skip(5)) // Second menu group
+                    {
+                        <a title="@menu.Title" href="@menu.Url">@menu.Title</a>
+                    }
+                </nav>
+                <div class="sl-notice mb-2">
+                    RoPhim – Phim hay cả rổ - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng tiếng full HD. Kho phim mới khổng lồ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung Quốc, Thái Lan, Nhật Bản, Âu Mỹ… đa dạng thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2025 chất lượng 4K!
+                </div>
+                <div class="sl-copyright">
+                    © 2025 RoPhim
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

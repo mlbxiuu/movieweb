@@ -1,0 +1,39 @@
+@model MovieWebsite.Models.Genre
+
+@{
+    ViewData["Title"] = "Thêm Thể Loại";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="admin-dashboard">
+    <h4>@ViewData["Title"]</h4>
+ 
+    <div class="row">
+        <div class="col-md-6">
+            <!-- SỬA Ở ĐÂY: Thêm asp-area và asp-controller vào form -->
+            <form asp-area="Admin" asp-controller="Genres" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Tên Thể Loại</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Color" class="control-label">Màu Sắc (mã Hex)</label>
+                    <input asp-for="Color" class="form-control" type="color" />
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Mô Tả</label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" class="btn-add">Tạo Mới</button>
+                    <!-- SỬA Ở ĐÂY: Thêm asp-area và asp-controller vào link -->
+                    <a asp-area="Admin" asp-controller="Genres" asp-action="Index" class="btn-action">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

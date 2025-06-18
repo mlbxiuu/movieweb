@@ -1,0 +1,68 @@
+@model MovieWebsite.Areas.Admin.Controllers.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Grid chứa các thẻ thống kê -->
+<div class="stats-grid">
+    <!-- Thẻ thống kê Phim -->
+    <div class="stats-card">
+        <div class="card-icon">
+            <i class="fas fa-film"></i>
+        </div>
+        <div class="card-content">
+            <h3>@Model.MovieCount</h3>
+            <p>Tổng số phim</p>
+        </div>
+        <a  asp-controller="Movies" asp-action="Index" class="card-link"></a>
+    </div>
+
+    <!-- Thẻ thống kê Thể loại -->
+    <div class="stats-card">
+        <div class="card-icon">
+            <i class="fas fa-tags"></i>
+        </div>
+        <div class="card-content">
+            <h3>@Model.GenreCount</h3>
+            <p>Tổng số thể loại</p>
+        </div>
+        <a asp-controller="Genres" asp-action="Index" class="card-link"></a>
+    </div>
+
+    <!-- Thẻ thống kê Quốc gia -->
+    <div class="stats-card">
+        <div class="card-icon">
+            <i class="fas fa-flag"></i>
+        </div>
+        <div class="card-content">
+            <h3>@Model.CountryCount</h3>
+            <p>Tổng số quốc gia</p>
+        </div>
+        <a asp-controller="Countries" asp-action="Index" class="card-link"></a>
+    </div>
+
+    <!-- Thẻ thống kê Người dùng (ví dụ) -->
+    <div class="stats-card">
+        <div class="card-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="card-content">
+            <h3>@Model.UserCount</h3>
+            <p>Tổng số người dùng</p>
+        </div>
+        <a asp-controller="Users" asp-action="Index" class="card-link"></a>
+    </div>
+</div>
+
+<!-- Thêm một biểu đồ hoặc bảng dữ liệu gần đây để trang thêm "wow" -->
+<div class="row mt-5">
+    <div class="col-md-12">
+        <div class="admin-dashboard">
+             <h4><i class="fas fa-chart-line"></i> Hoạt động gần đây</h4>
+             <p class="text-muted">Đây là nơi để hiển thị biểu đồ hoặc danh sách các phim/bình luận mới nhất...</p>
+             <!-- Nội dung biểu đồ sẽ được thêm sau -->
+        </div>
+    </div>
+</div>

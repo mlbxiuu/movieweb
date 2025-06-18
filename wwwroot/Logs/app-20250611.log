@@ -1,0 +1,4 @@
+2025-06-11 10:49:37.142 +07:00 [INF] Đã áp dụng migrations cho cơ sở dữ liệu SQLite.
+2025-06-11 10:49:37.168 +07:00 [INF] Thư mục Uploads đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Uploads
+2025-06-11 10:49:37.168 +07:00 [INF] Thư mục Logs đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Logs
+2025-06-11 10:50:04.409 +07:00 [WRN] Failed to determine the https port for redirect.

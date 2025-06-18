@@ -1,0 +1,52 @@
+2025-06-10 20:33:57.407 +07:00 [INF] Đã áp dụng migrations cho cơ sở dữ liệu SQLite.
+2025-06-10 20:33:57.447 +07:00 [INF] Thư mục Uploads đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Uploads
+2025-06-10 20:33:57.448 +07:00 [INF] Thư mục Logs đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Logs
+2025-06-10 20:35:08.033 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-06-10 20:37:08.437 +07:00 [INF] Nhận được MovieViewModel: Title=âsasa, Episodes=1, SelectedGenres=2, PosterFile=5008f114fa79d35c78a6913e0b3dc902.png, TrailerFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-10 20:37:08.443 +07:00 [WRN] Xác thực ModelState thất bại: The VideoPath field is required.
+2025-06-10 20:37:55.294 +07:00 [INF] Nhận được MovieViewModel: Title=âsasa, Episodes=0, SelectedGenres=2, PosterFile=5008f114fa79d35c78a6913e0b3dc902.png, TrailerFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-10 20:37:55.298 +07:00 [INF] Đang tải file poster: 5008f114fa79d35c78a6913e0b3dc902.png lên /Users/tanloc/MovieWebsite/wwwroot/Uploads/poster_7ee73feb-fb87-412b-a0b7-17588b0309e8.png
+2025-06-10 20:37:55.301 +07:00 [INF] Đang tải file trailer: Jurassic World Rebirth - Official Trailer 2.mp4 lên /Users/tanloc/MovieWebsite/wwwroot/Uploads/trailer_92aa7592-1f99-4c5e-a9b8-5bba8506e6a8.mp4
+2025-06-10 20:37:55.416 +07:00 [INF] Đã thêm phim: âsasa (ID: 4)
+2025-06-10 20:38:04.596 +07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-10 20:38:04.619 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-10 20:38:04.646 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.ThrowHelper.ThrowNoElementsException()
+   at System.Linq.Enumerable.Max[TSource,TResult](IEnumerable`1 source, Func`2 selector)
+   at AspNetCoreGeneratedDocument.Views_Movies_Details.ExecuteAsync()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-06-10 20:40:55.811 +07:00 [INF] Nhận được MovieViewModel: Title=abc, Episodes=1, SelectedGenres=2, PosterFile=5008f114fa79d35c78a6913e0b3dc902.png, TrailerFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-10 20:40:55.814 +07:00 [INF] Đang tải file poster: 5008f114fa79d35c78a6913e0b3dc902.png lên /Users/tanloc/MovieWebsite/wwwroot/Uploads/poster_61357853-8c68-4c3f-a478-fbc9bb697835.png
+2025-06-10 20:40:55.815 +07:00 [INF] Đang tải file trailer: Jurassic World Rebirth - Official Trailer 2.mp4 lên /Users/tanloc/MovieWebsite/wwwroot/Uploads/trailer_68417ab5-71f4-4e0e-94fc-c742af75e97e.mp4
+2025-06-10 20:40:55.825 +07:00 [INF] Xử lý tập phim: EpisodeNumber=1, VideoFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-10 20:40:55.825 +07:00 [INF] Đang tải file episode_1: Jurassic World Rebirth - Official Trailer 2.mp4 lên /Users/tanloc/MovieWebsite/wwwroot/Uploads/episode_1_98b0941e-9e66-42d9-b03f-317d1182446a.mp4
+2025-06-10 20:40:55.858 +07:00 [INF] Đã thêm phim: abc (ID: 5)
+2025-06-10 20:52:38.294 +07:00 [WRN] Movie not found with ID: 0
+2025-06-10 20:56:02.371 +07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-10 20:56:02.389 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.

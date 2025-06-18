@@ -1,0 +1,148 @@
+@model HomeViewModel1
+
+@{
+    ViewData["Title"] = "Khám Phá Thể Loại Phim";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/genre1.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="main-container">
+        <!-- Background Elements -->
+        <div class="bg-particles">
+            @* Particles will be dynamically added by JS now, but CSS still defines initial few if any are hardcoded *@
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-main">Khám Phá</span>
+                    <span class="title-highlight">Thể Loại</span>
+                </h1>
+                <p class="hero-subtitle">Tìm kiếm những bộ phim tuyệt vời theo sở thích của bạn</p>
+            </div>
+            <div class="hero-decoration">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+            </div>
+        </section>
+
+        <!-- Genre Grid Section -->
+        <section class="genre-section">
+            <div class="genre-grid-container"> @* Changed from genre-scroll-container / genre-row *@
+                @foreach (var genre in Model.Genres.Take(12)) @* Limit to 12 genres for 2 rows x 6 columns *@
+                {
+                    <a class="genre-card" asp-controller="Movies" asp-action="Index" asp-route-GenreId="@genre.Id"
+                       style="background: linear-gradient(135deg, @genre.Color 0%, rgba(0,0,0,0.7) 100%);">
+                        <div class="card-background">
+                            <div class="gradient-overlay" style="background: linear-gradient(135deg, @genre.Color 0%, rgba(0,0,0,0.7) 100%);"></div>
+                            <div class="pattern-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="genre-icon">
+                                @{
+                                    string iconClass = genre.Name.ToLower() switch
+                                    {
+                                        "hành động" => "fas fa-fist-raised",
+                                        "tâm lý" => "fas fa-theater-masks",
+                                        "hài hước" => "fas fa-laugh",
+                                        "kinh dị" => "fas fa-ghost",
+                                        "lãng mạn" => "fas fa-heart",
+                                        "khoa học viễn tưởng" => "fas fa-rocket",
+                                        "phiêu lưu" => "fas fa-compass",
+                                        "hoạt hình" => "fas fa-pencil-ruler",
+                                        "gia đình" => "fas fa-home",
+                                        "tài liệu" => "fas fa-book-open",
+                                        "chiến tranh" => "fas fa-helmet-battle",
+                                        "âm nhạc" => "fas fa-music",
+                                        "bí ẩn" => "fas fa-question-circle",
+                                        "tội phạm" => "fas fa-mask",
+                                        "viễn tây" => "fas fa-hat-cowboy",
+                                        "giật gân" => "fas fa-exclamation-triangle",
+                                        "chính kịch" => "fas fa-masks-theater",
+                                        "thần thoại" => "fas fa-dragon",
+                                        "lịch sử" => "fas fa-landmark",
+                                        "anime" => "fas fa-hat-wizard", // Or fa-manga, fa-japanese-pagoda
+                                        "võ thuật" => "fas fa-hand-fist",
+                                        _ => "fas fa-film" // Default icon
+                                    };
+                                }
+                                <i class="@iconClass"></i>
+                            </div>
+                            <h3 class="genre-title">@genre.Name</h3>
+                            <div class="card-footer">
+                                <span class="explore-text">Khám phá ngay</span>
+                                <i class="fas fa-arrow-right arrow-icon"></i>
+                            </div>
+                        </div>
+                        <div class="hover-effect"></div>
+                    </a>
+                }
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Add interactive hover effects (kept from your current script)
+        document.querySelectorAll('.genre-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+                this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.4)'; // Apply shadow on hover
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)'; // Reset shadow
+            });
+
+            card.addEventListener('click', function() {
+                this.style.transform = 'translateY(-8px) scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-12px) scale(1.02)';
+                }, 150);
+            });
+        });
+
+        // Dynamic particle generation (adapted to work with fixed particles and more variety)
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%'; // Random horizontal start
+            // No need to set 'top' here if keyframes handle vertical movement from bottom
+            
+            // Randomize animation duration and delay (handled by JS for variety)
+            particle.style.animationDuration = (15 + Math.random() * 15) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            
+            // Randomize particle size (for visual variety)
+            const size = (3 + Math.random() * 7); // From 3px to 10px
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            document.querySelector('.bg-particles').appendChild(particle);
+            
+            // Remove particle after its animation finishes to prevent DOM bloat
+            setTimeout(() => {
+                particle.remove();
+            }, (parseFloat(particle.style.animationDuration) * 1000) + (parseFloat(particle.style.animationDelay) * 1000) + 1000); // Add a buffer
+        }
+
+        // Generate an initial set of particles
+        for (let i = 0; i < 20; i++) { // Generate more initial particles for a fuller look
+            createParticle();
+        }
+        // Periodically generate new particles
+        setInterval(createParticle, 2000); // Create a new particle every 2 seconds
+    </script>
+</body>
+</html>

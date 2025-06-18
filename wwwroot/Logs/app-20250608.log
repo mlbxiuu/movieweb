@@ -1,0 +1,30 @@
+2025-06-08 16:29:48.825 +07:00 [INF] Đã áp dụng migrations cho cơ sở dữ liệu SQLite.
+2025-06-08 16:29:48.867 +07:00 [INF] Thư mục Uploads đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Uploads
+2025-06-08 16:29:48.867 +07:00 [INF] Thư mục Logs đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Logs
+2025-06-08 16:30:09.897 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-06-08 16:30:17.478 +07:00 [INF] Nhận được MovieViewModel: Title=aaaa, Episodes=1, SelectedGenres=1
+2025-06-08 16:30:17.481 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required., The VideoPath field is required., The MovieTitle field is required.
+2025-06-08 16:30:22.592 +07:00 [INF] Nhận được MovieViewModel: Title=aaaa, Episodes=1, SelectedGenres=1
+2025-06-08 16:30:22.592 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required., The VideoPath field is required., The MovieTitle field is required.
+2025-06-08 16:30:49.942 +07:00 [INF] Nhận được MovieViewModel: Title=aaaa, Episodes=1, SelectedGenres=2
+2025-06-08 16:30:49.943 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required., The VideoPath field is required., The MovieTitle field is required.
+2025-06-08 16:40:13.898 +07:00 [INF] Nhận được MovieViewModel: Title=aaaa, Episodes=1, SelectedGenres=2
+2025-06-08 16:40:13.898 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required., The VideoPath field is required., The MovieTitle field is required.
+2025-06-08 16:48:56.642 +07:00 [INF] Nhận được MovieViewModel: Title=anabsbasn, Episodes=1, SelectedGenres=1, PosterFile=5008f114fa79d35c78a6913e0b3dc902.png, TrailerFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-08 16:48:56.643 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required., The VideoPath field is required., The MovieTitle field is required.
+2025-06-08 16:57:42.139 +07:00 [INF] Đã áp dụng migrations cho cơ sở dữ liệu SQLite.
+2025-06-08 16:57:42.180 +07:00 [INF] Thư mục Uploads đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Uploads
+2025-06-08 16:57:42.180 +07:00 [INF] Thư mục Logs đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Logs
+2025-06-08 16:57:55.850 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-06-08 16:58:43.563 +07:00 [INF] Nhận được MovieViewModel: Title=nasbajsahsvhav, Episodes=1, SelectedGenres=2, PosterFile=5008f114fa79d35c78a6913e0b3dc902.png, TrailerFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-08 16:58:43.567 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required., The VideoPath field is required., The MovieTitle field is required.
+2025-06-08 16:59:29.102 +07:00 [INF] Nhận được MovieViewModel: Title=nasbajsahsvhav, Episodes=0, SelectedGenres=2, PosterFile=5008f114fa79d35c78a6913e0b3dc902.png, TrailerFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-08 16:59:29.103 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required.
+2025-06-08 17:06:09.582 +07:00 [INF] Nhận được MovieViewModel: Title=nmajhasajhv, Episodes=0, SelectedGenres=2, PosterFile=5008f114fa79d35c78a6913e0b3dc902.png, TrailerFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-08 17:06:09.584 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required.
+2025-06-08 17:07:34.708 +07:00 [INF] Nhận được MovieViewModel: Title=nmajhasajhv, Episodes=0, SelectedGenres=2, PosterFile=Lens camera Fast logo template-2.png, TrailerFile=Jurassic World Rebirth - Official Trailer 2.mp4
+2025-06-08 17:07:34.709 +07:00 [WRN] Xác thực ModelState thất bại: The PosterPath field is required., The TrailerPath field is required.
+2025-06-08 20:36:34.009 +07:00 [INF] Đã áp dụng migrations cho cơ sở dữ liệu SQLite.
+2025-06-08 20:36:34.056 +07:00 [INF] Thư mục Uploads đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Uploads
+2025-06-08 20:36:34.056 +07:00 [INF] Thư mục Logs đã được tạo hoặc xác minh tại: /Users/tanloc/MovieWebsite/wwwroot/Logs
+2025-06-08 20:36:58.585 +07:00 [WRN] Failed to determine the https port for redirect.

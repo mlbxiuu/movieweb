@@ -1,0 +1,89 @@
+@{
+    // Lấy tên controller hiện tại để xác định mục menu nào đang active
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link tới file CSS mới -->
+    <link rel="stylesheet" href="~/css/admin_wow.css" asp-append-version="true" />
+
+    <!-- SỬA Ở ĐÂY: Thêm dòng RenderSection -->
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-shield-alt"></i> Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <!-- Sửa các link và thêm logic cho class active -->
+                    <li>
+                        <a asp-area="Admin" asp-controller="Admin" asp-action="Index"
+                            class="nav-item @(currentController == "Admin" ? "active" : "")">
+                            <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="AdMovies" asp-action="ListMovies"
+                            class="nav-item @(currentController == "AdMovies" ? "active" : "")">
+                            <i class="fas fa-film"></i> <span>Quản Lý Phim</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Genres" asp-action="Index"
+                            class="nav-item @(currentController == "Genres" ? "active" : "")">
+                            <i class="fas fa-tags"></i> <span>Quản Lý Thể Loại</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Countries" asp-action="Index"
+                            class="nav-item @(currentController == "Countries" ? "active" : "")">
+                            <i class="fas fa-flag"></i> <span>Quản Lý Quốc Gia</span>
+                        </a>
+                    </li>
+                    <!-- Thêm các mục khác sau này, ví dụ: Quản lý người dùng -->
+                    <!-- Link về trang chủ -->
+
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+
+                <a asp-area="" asp-controller="Movies" asp-action="Index" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i> <span>Về trang chủ</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h3>@ViewData["Title"]</h3>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Xin chào, Admin!</span>
+                </div>
+            </header>
+            <div class="content-wrapper">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <!-- Giữ nguyên phần render script -->
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

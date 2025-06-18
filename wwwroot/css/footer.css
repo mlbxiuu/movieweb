@@ -1,0 +1,254 @@
+/* Thiết lập chung */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Hoặc font tương tự */
+    background-color: #0d0d0d; /* Nền tối cho toàn trang */
+    color: #e0e0e0; /* Màu chữ sáng mặc định */
+    line-height: 1.6;
+}
+
+/* Phần Footer */
+.footer {
+    background-color: #1a1a1a; /* Nền tối của footer, hơi sáng hơn body */
+    padding: 40px 0;
+    position: relative; /* Dùng để định vị background pattern */
+    overflow: hidden; /* Đảm bảo pattern không tràn ra ngoài */
+    z-index: 1; /* Đảm bảo footer nằm trên các phần tử khác nếu có */
+}
+
+/* Background pattern (các đường cong mờ) */
+/* Rất khó để tái tạo chính xác bằng CSS thuần.
+   Bạn nên dùng một hình ảnh SVG hoặc PNG làm background.
+   Tôi sẽ dùng một placeholder URL, bạn cần thay bằng ảnh thực tế của mình.
+   Ví dụ: background-image: url('path/to/your/abstract-lines-pattern.svg');
+*/
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Đây là phần bạn cần thay thế bằng URL của ảnh pattern của bạn */
+    background-image: url('https://www.rophim.me/images/footer-icon.svg'); /* Ảnh pattern từ hình gốc (cắt ra) */
+    background-size: cover; /* Đảm bảo ảnh bao phủ toàn bộ */
+    background-repeat: no-repeat;
+    background-position: center right; /* Điều chỉnh vị trí nếu cần */
+    opacity: 0.05; /* Độ mờ của pattern */
+    pointer-events: none; /* Cho phép tương tác với nội dung bên dưới */
+    z-index: 0; /* Đặt dưới nội dung */
+}
+
+
+.footer-content-wrapper {
+    /* max-width: 1200px; Chiều rộng tối đa của nội dung */
+    margin: 0 100px; /* Căn giữa */
+    padding: 0 20px; /* Khoảng đệm hai bên */
+    position: relative; /* Để nội dung nằm trên pattern */
+    z-index: 1;
+}
+
+/* Banner "Hoàng Sa & Trường Sa..." */
+.footer-banner {
+    background-color: #a02020; /* Màu đỏ sẫm */
+    border-radius: 25px; /* Bo tròn để tạo hình viên thuốc */
+    padding: 8px 25px;
+    display: flex; /* Dùng flexbox để căn giữa nội dung */
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 10px 10px 40px; /* Căn giữa ngang và tạo khoảng cách dưới */
+    width: fit-content; /* Chiều rộng vừa với nội dung */
+}
+
+.footer-banner .star {
+    margin-right: 8px;
+    font-size: 18px; /* Kích thước sao */
+}
+
+/* Header Footer (Logo và Social) */
+.footer-header {
+    display: flex;
+    justify-content: space-between; /* Đẩy logo và social media ra 2 đầu */
+    align-items: center;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+    margin-bottom: 30px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Mô phỏng icon play button và đường cong vàng */
+/* Lý tưởng nhất là dùng ảnh SVG cho phần này để giữ độ sắc nét */
+.footer-logo .play-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #fdd835; /* Màu vàng của nền icon */
+    border-radius: 50%; /* Hình tròn */
+    position: relative;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo .play-icon::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #1a1a1a; /* Màu tam giác play */
+    transform: translateX(2px); /* Điều chỉnh vị trí tam giác */
+}
+
+/* Để tạo các đường cong vàng phức tạp như trong logo gốc,
+   bạn sẽ cần dùng SVG làm background-image cho .play-icon hoặc dùng thẻ <img src="...">
+   Với CSS thuần, nó sẽ rất phức tạp hoặc không chính xác 100%.
+   Ví dụ nếu dùng ảnh:
+   .footer-logo .logo-img {
+       width: 50px;
+       height: 50px;
+       margin-right: 15px;
+   }
+*/
+
+.footer-logo .logo-text h3 {
+    margin: 0;
+    font-size: 32px;
+    color: #fff; /* Màu trắng cho "RoPhim" */
+    font-weight: bold;
+    line-height: 1; /* Giảm khoảng cách dòng */
+}
+
+.footer-logo .logo-text p {
+    margin: 0;
+    font-size: 16px;
+    color: #b0b0b0; /* Màu xám nhạt hơn cho slogan */
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các icon */
+    flex-wrap: wrap; /* Cho phép xuống dòng */
+    margin-top: 10px; /* Khoảng cách trên nếu logo và social xuống dòng */
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%; /* Hình tròn */
+    background-color: #2b2b2b; /* Nền của icon */
+    color: #e0e0e0; /* Màu icon */
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Hiệu ứng hover */
+}
+
+.social-icon:hover {
+    background-color: #3a3a3a; /* Nền sáng hơn khi hover */
+}
+
+/* Phần Links và Categories */
+.footer-links-and-categories {
+    display: flex;
+    justify-content: flex-start; /* Căn các cột sang trái */
+    gap: 50px; /* Khoảng cách giữa các cột */
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+}
+
+.footer-nav ul,
+.footer-categories ul {
+    list-style: none; /* Bỏ dấu chấm của list */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav li,
+.footer-categories li {
+    margin-bottom: 10px; /* Khoảng cách giữa các mục list */
+}
+
+.footer-nav a,
+.footer-categories a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold; /* Chữ in đậm */
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover,
+.footer-categories a:hover {
+    color: #fff; /* Màu trắng khi hover */
+}
+
+/* Phần Mô tả */
+.footer-description p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #b0b0b0; /* Màu chữ xám nhạt */
+    margin-bottom: 20px;
+}
+
+/* Phần Bản quyền */
+.footer-copyright p {
+    font-size: 14px;
+    color: #888; /* Màu chữ bản quyền */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-header {
+        flex-direction: column; /* Xếp logo và social media theo cột */
+        align-items: flex-start; /* Căn trái */
+    }
+
+    .footer-social {
+        margin-top: 20px;
+        justify-content: flex-start; /* Căn trái các icon */
+    }
+
+    .footer-links-and-categories {
+        flex-direction: column; /* Xếp các cột nav và category theo cột */
+        gap: 20px; /* Giảm khoảng cách */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content-wrapper {
+        padding: 0 15px; /* Giảm padding trên điện thoại */
+    }
+
+    .footer-banner {
+        font-size: 12px;
+        padding: 6px 15px;
+    }
+
+    .footer-logo .logo-text h3 {
+        font-size: 28px;
+    }
+
+    .footer-logo .logo-text p {
+        font-size: 14px;
+    }
+
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .footer-description p,
+    .footer-copyright p {
+        font-size: 13px;
+    }
+}

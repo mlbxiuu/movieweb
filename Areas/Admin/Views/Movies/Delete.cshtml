@@ -1,0 +1,43 @@
+@model MovieWebsite.Models.Movie
+
+@{
+    ViewData["Title"] = "Xác Nhận Xóa Phim";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="admin-dashboard">
+    <h4>@ViewData["Title"]</h4>
+    
+    <div class="alert alert-danger">
+        <h3>Bạn có chắc chắn muốn xóa phim này?</h3>
+        <p>Tất cả các tập phim, bình luận, đánh giá liên quan cũng sẽ bị xóa vĩnh viễn.</p>
+    </div>
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">Tên Phim</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Title)</dd>
+
+            <dt class="col-sm-3">Năm</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.ReleaseYear)</dd>
+            
+            <dt class="col-sm-3">Quốc Gia</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Country.Name)</dd>
+
+            <dt class="col-sm-3">Poster</dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.PosterPath))
+                {
+                    <img src="@Model.PosterPath" style="max-width: 100px;" />
+                }
+            </dd>
+        </dl>
+        
+        <form asp-area="Admin" asp-controller="Movies" asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn-action delete">Xác Nhận Xóa</button> |
+            <a asp-area="Admin" asp-controller="Movies" asp-action="Index">Quay lại danh sách</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,283 @@
+@model MovieViewModel
+@{
+    ViewData["Title"] = "Chỉnh Sửa Phim";
+}
+
+<div class="container-fluid px-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-warning text-dark py-3">
+                    <h3 class="mb-0">
+                        <i class="fas fa-edit me-2"></i>
+                        Chỉnh Sửa Phim: @Model.Title
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <input asp-for="Id" type="hidden" />
+                        <input asp-for="PosterPath" type="hidden" />
+                        <input asp-for="TrailerPath" type="hidden" />
+                        
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        
+                        <div class="row">
+                            <!-- Left Column -->
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="Title" class="form-label fw-bold">
+                                        <i class="fas fa-film me-1"></i>
+                                        Tên Phim (Tiếng Việt) *
+                                    </label>
+                                    <input asp-for="Title" class="form-control form-control-lg" placeholder="Nhập tên phim bằng tiếng Việt" required />
+                                    <span asp-validation-for="Title" class="text-danger small"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="EnglishTitle" class="form-label fw-bold">
+                                        <i class="fas fa-globe me-1"></i>
+                                        Tên Phim (Tiếng Anh)
+                                    </label>
+                                    <input asp-for="EnglishTitle" class="form-control" placeholder="Nhập tên phim bằng tiếng Anh" />
+                                    <span asp-validation-for="EnglishTitle" class="text-danger small"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Description" class="form-label fw-bold">
+                                        <i class="fas fa-align-left me-1"></i>
+                                        Mô Tả *
+                                    </label>
+                                    <textarea asp-for="Description" class="form-control" rows="5" placeholder="Nhập mô tả chi tiết về phim..." required></textarea>
+                                    <span asp-validation-for="Description" class="text-danger small"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="ReleaseYear" class="form-label fw-bold">
+                                            <i class="fas fa-calendar me-1"></i>
+                                            Năm Phát Hành *
+                                        </label>
+                                        <input asp-for="ReleaseYear" class="form-control" type="number" min="1900" max="2030" required />
+                                        <span asp-validation-for="ReleaseYear" class="text-danger small"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="TotalEpisodes" class="form-label fw-bold">
+                                            <i class="fas fa-list-ol me-1"></i>
+                                            Tổng Số Tập
+                                        </label>
+                                        <input asp-for="TotalEpisodes" class="form-control" type="number" min="1" />
+                                        <span asp-validation-for="TotalEpisodes" class="text-danger small"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="CountryId" class="form-label fw-bold">
+                                            <i class="fas fa-flag me-1"></i>
+                                            Quốc Gia *
+                                        </label>
+                                        <select asp-for="CountryId" class="form-select" asp-items="@(new SelectList(Model.Countries, "Id", "Name", Model.CountryId))" required>
+                                            <option value="">-- Chọn quốc gia --</option>
+                                        </select>
+                                        <span asp-validation-for="CountryId" class="text-danger small"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="GenreId" class="form-label fw-bold">
+                                            <i class="fas fa-tags me-1"></i>
+                                            Thể Loại Chính *
+                                        </label>
+                                        <select asp-for="GenreId" class="form-select" asp-items="@(new SelectList(Model.Genres, "Id", "Name", Model.GenreId))" required>
+                                            <option value="">-- Chọn thể loại chính --</option>
+                                        </select>
+                                        <span asp-validation-for="GenreId" class="text-danger small"></span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">
+                                        <i class="fas fa-tag me-1"></i>
+                                        Thể Loại Phụ
+                                    </label>
+                                    <div class="row">
+                                        @if (Model.Genres != null)
+                                        {
+                                            @for (int i = 0; i < Model.Genres.Count; i++)
+                                            {
+                                                <div class="col-md-4 mb-2">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="SelectedGenreIds" value="@Model.Genres[i].Id" 
+                                                               class="form-check-input" id="genre_@Model.Genres[i].Id"
+                                                               @(Model.SelectedGenreIds != null && Model.SelectedGenreIds.Contains(Model.Genres[i].Id) ? "checked" : "") />
+                                                        <label class="form-check-label" for="genre_@Model.Genres[i].Id">
+                                                            @Model.Genres[i].Name
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="Director" class="form-label fw-bold">
+                                        <i class="fas fa-user-tie me-1"></i>
+                                        Đạo Diễn
+                                    </label>
+                                    <input asp-for="Director" class="form-control" placeholder="Nhập tên đạo diễn" />
+                                    <span asp-validation-for="Director" class="text-danger small"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Cast" class="form-label fw-bold">
+                                        <i class="fas fa-users me-1"></i>
+                                        Diễn Viên
+                                    </label>
+                                    <input asp-for="Cast" class="form-control" placeholder="Nhập tên các diễn viên (cách nhau bằng dấu phẩy)" />
+                                    <span asp-validation-for="Cast" class="text-danger small"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="IsCompleted" class="form-check-input" type="checkbox" />
+                                        <label asp-for="IsCompleted" class="form-check-label fw-bold">
+                                            <i class="fas fa-check-circle me-1"></i>
+                                            Đã Hoàn Thành
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Current Files Display -->
+                                <div class="card border-info mb-3">
+                                    <div class="card-header bg-info text-white">
+                                        <h6 class="mb-0">
+                                            <i class="fas fa-file me-1"></i>
+                                            Files Hiện Tại
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        @if (!string.IsNullOrEmpty(Model.PosterPath))
+                                        {
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">Poster Hiện Tại:</label>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="@Model.PosterPath" alt="Current Poster" class="img-thumbnail me-3" style="max-width: 100px; max-height: 150px;" />
+                                                    <span class="text-success">
+                                                        <i class="fas fa-check-circle me-1"></i>
+                                                        Đã có poster
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        @if (!string.IsNullOrEmpty(Model.TrailerPath))
+                                        {
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">Trailer Hiện Tại:</label>
+                                                <div class="d-flex align-items-center">
+                                                    <video controls style="max-width: 200px; max-height: 120px;" class="me-3">
+                                                        <source src="@Model.TrailerPath" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                    <span class="text-success">
+                                                        <i class="fas fa-check-circle me-1"></i>
+                                                        Đã có trailer
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <!-- File Upload Section -->
+                                <div class="card border-secondary mb-3">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0">
+                                            <i class="fas fa-upload me-1"></i>
+                                            Thay Đổi Files
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label asp-for="PosterFile" class="form-label fw-bold">
+                                                <i class="fas fa-image me-1"></i>
+                                                Poster Mới <small class="text-muted">(Max 10MB)</small>
+                                            </label>
+                                            <input asp-for="PosterFile" class="form-control" type="file" accept="image/*" />
+                                            <span asp-validation-for="PosterFile" class="text-danger small"></span>
+                                            <div class="form-text">Để trống nếu không muốn thay đổi. Chấp nhận: JPEG, JPG, PNG, GIF, WebP</div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label asp-for="TrailerFile" class="form-label fw-bold">
+                                                <i class="fas fa-video me-1"></i>
+                                                Trailer Mới <small class="text-muted">(Max 200MB)</small>
+                                            </label>
+                                            <input asp-for="TrailerFile" class="form-control" type="file" accept="video/*" />
+                                            <span asp-validation-for="TrailerFile" class="text-danger small"></span>
+                                            <div class="form-text">Để trống nếu không muốn thay đổi. Chấp nhận: MP4, MOV, AVI, WebM</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <a asp-action="Index" class="btn btn-secondary btn-lg me-2">
+                                            <i class="fas fa-arrow-left me-1"></i>
+                                            Quay Lại Danh Sách
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-info btn-lg">
+                                            <i class="fas fa-eye me-1"></i>
+                                            Xem Chi Tiết
+                                        </a>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning btn-lg">
+                                        <i class="fas fa-save me-1"></i>
+                                        Cập Nhật Phim
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script>
+        // Form validation
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
+        // Confirm before submit
+        document.querySelector('form').addEventListener('submit', function(e) {
+            if (!confirm('Bạn có chắc chắn muốn cập nhật thông tin phim này?')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+}

@@ -1,0 +1,154 @@
+/* .admin-dashboard {
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content {
+    display: block;
+}
+
+.tab-pane {
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+.tab-pane.active {
+    display: block;
+    opacity: 1;
+}
+
+.management-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.management-table th,
+.management-table td {
+    border: 1px solid #e9ecef;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.management-table th {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.management-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.management-table tr:hover {
+    background-color: #e9ecef;
+    transition: background-color 0.2s ease;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.btn-add {
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    background: linear-gradient(90deg, #0056b3, #003366);
+}
+
+.btn-action {
+    padding: 8px 15px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-action.update {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-action.delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-action:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-action.update:hover {
+    background-color: #218838;
+}
+
+.btn-action.delete:hover {
+    background-color: #c82333;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .management-table th,
+  .management-table td {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .btn-add {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .btn-action {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}

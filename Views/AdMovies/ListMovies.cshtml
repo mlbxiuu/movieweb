@@ -1,0 +1,73 @@
+@model IEnumerable<MovieWebsite.Models.Movie>
+
+@{
+    ViewData["Title"] = "Quản Lý Phim";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="admin-dashboard">
+    <h4>@ViewData["Title"]</h4>
+
+    <p>
+        <a asp-area="Admin" asp-controller="AdMovies" asp-action="Create" class="btn-add"
+            style="text-decoration: none;">Thêm Phim Mới</a>
+    </p>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <table class="management-table">
+        <thead>
+            <tr>
+                <th>Poster</th>
+                <th>Tên Phim</th>
+                <th>Năm</th>
+                <th>Quốc Gia</th>
+                <th>Thể Loại</th>
+                <th>Tập/Tổng</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@(item.PosterPath ?? "/images/no-poster.png")" alt="Poster"
+                            style="width: 60px; height: 90px; object-fit: cover; border-radius: 4px;" />
+                    </td>
+                    <td>
+                        <strong>@Html.DisplayFor(modelItem => item.Title)</strong><br />
+                        <small>@Html.DisplayFor(modelItem => item.EnglishTitle)</small>
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.ReleaseYear)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Country.Name)</td>
+                    <td>
+                        @{
+                            // Hiển thị các thể loại
+                            var genres = item.MovieGenres.Select(mg => mg.Genre.Name);
+                            <span>@string.Join(", ", genres)</span>
+                        }
+                    </td>
+                    <td>
+                        @item.Episodes.Count() / @item.TotalEpisodes
+                    </td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="AdMovies" asp-action="Edit" asp-route-id="@item.Id"
+                            class="btn-action update">Sửa</a>
+                        <a asp-area="Admin" asp-controller="AdMovies" asp-action="Delete" asp-route-id="@item.Id"
+                            class="btn-action delete">Xóa</a>
+                        @* Thêm link quản lý tập phim sau này *@
+                        @* <a asp-controller="Episodes" asp-action="Index" asp-route-movieId="@item.Id" class="btn-action">QL Tập</a> *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

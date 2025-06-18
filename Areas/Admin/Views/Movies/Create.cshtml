@@ -1,0 +1,119 @@
+@model MovieViewModel
+
+@{
+    ViewData["Title"] = "Thêm Phim Mới";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="admin-dashboard">
+    <h4><i class="fas fa-plus-circle"></i> @ViewData["Title"]</h4>
+
+    <form asp-area="Admin" asp-controller="Movies" asp-action="Create" method="post" enctype="multipart/form-data" class="mt-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+        <div class="row">
+            <!-- ===== CỘT TRÁI - THÔNG TIN CHÍNH ===== -->
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Nhập tên phim..." />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EnglishTitle"></label>
+                    <input asp-for="EnglishTitle" class="form-control" placeholder="Nhập tên tiếng Anh (nếu có)..." />
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control" rows="8" placeholder="Nhập mô tả chi tiết, nội dung phim..."></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PosterFile"></label>
+                            <input asp-for="PosterFile" class="form-control" type="file" accept="image/*" />
+                             <span asp-validation-for="PosterFile" class="text-danger"></span>
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="TrailerFile"></label>
+                            <input asp-for="TrailerFile" class="form-control" type="file" accept="video/*" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== CỘT PHẢI - CHI TIẾT SẢN XUẤT ===== -->
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="CountryId">Quốc gia</label>
+                    <select asp-for="CountryId" class="form-control" asp-items="@(new SelectList(Model.Countries, "Id", "Name"))">
+                        <option value="">-- Chọn quốc gia --</option>
+                    </select>
+                    <span asp-validation-for="CountryId" class="text-danger"></span>
+                </div>
+
+                <!-- SỬA LẠI Ở ĐÂY: Bọc "Thể loại chính" vào trong một form-group -->
+                <div class="form-group">
+                    <label asp-for="GenreId">Thể loại chính</label>
+                    <select asp-for="GenreId" class="form-control" asp-items="@(new SelectList(Model.Genres, "Id", "Name"))">
+                        <option value="">-- Vui lòng chọn thể loại chính --</option>
+                    </select>
+                    <span asp-validation-for="GenreId" class="text-danger"></span>
+                </div>
+
+                <!-- SỬA LẠI Ở ĐÂY: Đưa tất cả các form-group còn lại vào BÊN TRONG col-md-4 -->
+                <div class="form-group">
+                    <label asp-for="SelectedGenreIds">Thể loại khác</label>
+                    <select asp-for="SelectedGenreIds" class="form-control" asp-items="@(new SelectList(Model.Genres, "Id", "Name"))" multiple="multiple" style="height: 120px;"></select>
+                    <small class="text-muted" style="font-size: 0.8rem; opacity: 0.8;">Giữ Ctrl/Command để chọn nhiều thể loại.</small>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ReleaseYear">Năm phát hành</label>
+                    <input asp-for="ReleaseYear" type="number" class="form-control" placeholder="VD: 2023" />
+                    <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="TotalEpisodes">Tổng số tập</label>
+                    <input asp-for="TotalEpisodes" type="number" class="form-control" value="1" />
+                    <span asp-validation-for="TotalEpisodes" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Director"></label>
+                    <input asp-for="Director" class="form-control" placeholder="Nguyễn Văn A,..." />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cast">Diễn viên</label>
+                    <input asp-for="Cast" class="form-control" placeholder="Trấn Thành,..." />
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="IsCompleted">Trạng thái</label>
+                    <select asp-for="IsCompleted" class="form-control">
+                        <option value="false">Đang tiến hành</option>
+                        <option value="true">Đã hoàn thành</option>
+                    </select>
+                </div>
+            </div> <!-- Đóng thẻ col-md-4 -->
+        </div> <!-- Đóng thẻ row chính -->
+
+        <div class="d-flex justify-content-end mt-4 pt-4" style="border-top: 1px solid var(--border-color);">
+            <a asp-area="Admin" asp-controller="Movies" asp-action="Index" class="btn-action mr-2">Hủy Bỏ</a>
+            <button type="submit" class="btn-action update">
+                <i class="fas fa-save mr-2"></i> Tạo Phim
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

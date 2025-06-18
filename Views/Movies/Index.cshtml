@@ -1,0 +1,452 @@
+@model MovieSearchViewModel
+@{
+    ViewBag.Title = "CineViet - Xem Phim Online Miễn Phí";
+}
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/genre.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
+
+</head>
+
+<body>
+
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <!-- Background Image -->
+        <div class="hero-background-image"
+            style="background-image: url('https://static.nutscdn.com/vimg/1920-0/ca24572562380c30faeaedb6e5fcb854.webp');">
+        </div>
+        <!-- Dark Overlay for readability and depth -->
+        <div class="hero-overlay"></div>
+        <!-- Subtle Dot Pattern Overlay -->
+        <div class="hero-dot-pattern"></div>
+
+        <!-- Main Content Area -->
+        <div class="hero-detail-content">
+            <h1 class="series-main-title">ONE</h1>
+            <p class="series-subtitle">NGƯỜI HÙNG TRUNG HỌC</p>
+            <p class="series-original-title">ONE: High School Heroes</p>
+
+            <!-- Metadata Section (IMDb, 4K, Age Rating, Year, Part, Episode) -->
+            <div class="series-metadata">
+                <span class="meta-item meta-imdb">IMDb 8.4</span>
+                <span class="meta-item meta-4k">4K</span>
+                <span class="meta-item meta-age-rating">T16</span>
+                <span class="meta-item meta-year">2025</span>
+                <span class="meta-item meta-part">Phần 1</span>
+                <span class="meta-item meta-episode">Tập 8</span>
+            </div>
+
+            <!-- Genres Section -->
+            <div class="series-genres">
+                <span class="genre-tag">Hành Động</span>
+                <span class="genre-tag">Gay Cấn</span>
+                <span class="genre-tag">Tâm Lý</span>
+                <span class="genre-tag">Học Đường</span>
+            </div>
+
+            <!-- Description -->
+            <p class="series-description">
+                Dựa trên webtoon cùng tên, kể về câu chuyện của một học sinh gương mẫu từng dành
+                toàn bộ sự chú ý của mình cho việc học nhưng bị vướng vào bạo lực gia đình và bắt nạt ở
+                trường, buộc anh phải đưa ra quyết định mang tính thay đổi. One: High School Heroes k...
+            </p>
+
+            <!-- Action Buttons (Play, Heart, Info) -->
+            <div class="series-action-buttons">
+                <button class="btn-play-detail">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="btn-action-icon-detail">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <button class="btn-action-icon-detail">
+                    <i class="fas fa-info"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Thumbnails at the bottom right -->
+        <div class="series-thumbnails">
+            <div class="thumbnail" style="background-image: url('https://i.imgur.com/kS9lY4i.png');"></div>
+            <div class="thumbnail" style="background-image: url('https://i.imgur.com/vH1oUjB.jpeg');"></div>
+            <div class="thumbnail" style="background-image: url('https://i.imgur.com/z0N5r8y.jpeg');"></div>
+            <div class="thumbnail" style="background-image: url('https://i.imgur.com/Z4c9r7Q.jpeg');"></div>
+            <div class="thumbnail" style="background-image: url('https://i.imgur.com/0F9g7gD.jpeg');"></div>
+            <div class="thumbnail" style="background-image: url('https://i.imgur.com/Uo2wJ3A.jpeg');"></div>
+        </div>
+    </section>
+
+    <!-- Genre Topics Section -->
+    <div class="genre-title">Bạn đang quan tâm gì?</div>
+    <section class="genre-section">
+        <div class="genre-scroll-container">
+            <div class="genre-row">
+                @foreach (var genre in Model.Genres.Take(11))
+                {
+                    <a class="genre-card" asp-controller="Movies" asp-action="Index" asp-route-GenreId="@genre.Id"
+                        style="background: linear-gradient(135deg, @genre.Color 0%, rgba(0,0,0,0.7) 100%);">
+                        <div class="card-background">
+                            <div class="gradient-overlay"
+                                style="background: linear-gradient(135deg, @genre.Color 0%, rgba(0,0,0,0.7) 100%);"></div>
+                            <div class="pattern-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="genre-icon">
+                                @{
+                                    string iconClass = genre.Name.ToLower() switch
+                                    {
+                                        "hành động" => "fas fa-fist-raised",
+                                        "tâm lý" => "fas fa-theater-masks",
+                                        "hài hước" => "fas fa-laugh",
+                                        "kinh dị" => "fas fa-ghost",
+                                        "lãng mạn" => "fas fa-heart",
+                                        "khoa học" => "fas fa-rocket",
+                                        _ => "fas fa-film"
+                                    };
+                                }
+                                <i class="@iconClass"></i>
+                            </div>
+                            <h3 class="genre-title">@genre.Name</h3>
+                            <div class="card-footer">
+                                <span class="explore-text">Khám phá ngay</span>
+                                <i class="fas fa-arrow-right arrow-icon"></i>
+                            </div>
+                        </div>
+                        <div class="hover-effect"></div>
+                    </a>
+                }
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Latest Movies Section -->
+    @* @if (Model.Movies.Any())
+{
+    <section class="movie-section" id="movies">
+        <div class="section-header">
+            <h2 class="section-title">Phim Trung Quốc</h2> <!-- Điều chỉnh tiêu đề theo ảnh -->
+            <a href="/Movies" class="view-all">Xem toàn bộ <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="movie-grid">
+            @foreach (var movie in Model.Movies.Take(12))
+            {
+                <div class="movie-card" onclick="location.href='/Movies/Details/@movie.Id'">
+                    <div class="movie-poster">
+                        @if (!string.IsNullOrEmpty(movie.PosterPath))
+                        {
+                            <img src="@movie.PosterPath" alt="@movie.Title" />
+                        }
+                        else
+                        {
+                            <i class="fas fa-film"></i>
+                        }
+                        
+                        <!-- Thêm các thẻ này nếu bạn có dữ liệu tương ứng trong Model.Movie -->
+                        @if (movie.EpisodesReleased > 0)
+                        {
+                            <span class="episode-tag released">PD. @movie.EpisodesReleased</span>
+                        } 
+                        @if (movie.TotalEpisodes > 0)
+                        {
+                            <span class="episode-tag total">TM. @movie.TotalEpisodes</span>
+                        }
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">@movie.Title</h3>
+                        <p class="movie-year">@movie.EnglishTitle</p> <!-- Thay thế movie.ReleaseYear bằng EnglishTitle nếu có -->
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+} *@
+
+    <!-- Korean Movies Section -->
+    @{
+        var koreanMovies = Model.Movies.Where(m => Model.Countries.Any(c => c.Id == m.CountryId && c.Code ==
+        "KR")).Take(8).ToList();
+    }
+    @if (koreanMovies.Any())
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    @* <div class="country-flag">🇰🇷</div> *@
+                    Phim Hàn Quốc mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "KR")?.Id)" class="view-all">Xem
+                    tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movie-grid">
+                @foreach (var movie in koreanMovies)
+                {
+                    <div class="movie-card" onclick="location.href='/Movies/Details/@movie.Id'">
+                        <div class="movie-poster">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img src="@movie.PosterPath" alt="@movie.Title" />
+                            }
+                            else
+                            {
+                                <i class="fas fa-film"></i>
+                            }
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">@movie.Title</h3>
+                            <p class="movie-year">@movie.ReleaseYear</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <div class="country-flag">🇰🇷</div>
+                    Phim Hàn Quốc mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "KR")?.Id)" class="view-all">Xem
+                    tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="empty-state">
+                <i class="fas fa-film"></i>
+                <p>Không có phim Hàn Quốc nào hiện tại</p>
+            </div>
+        </section>
+    }
+
+    <!-- Chinese Movies Section -->
+    @{
+        var chineseMovies = Model.Movies.Where(m => Model.Countries.Any(c => c.Id == m.CountryId && c.Code ==
+        "CN")).Take(8).ToList();
+    }
+    @if (chineseMovies.Any())
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    @* <div class="country-flag">🇨🇳</div> *@
+                    Phim Trung Quốc mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "CN")?.Id)" class="view-all">Xem
+                    tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movie-grid">
+                @foreach (var movie in chineseMovies)
+                {
+                    <div class="movie-card" onclick="location.href='/Movies/Details/@movie.Id'">
+                        <div class="movie-poster">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img src="@movie.PosterPath" alt="@movie.Title" />
+                            }
+                            else
+                            {
+                                <i class="fas fa-film"></i>
+                            }
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">@movie.Title</h3>
+                            <p class="movie-year">@movie.ReleaseYear</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    @* <div class="country-flag">🇨🇳</div> *@
+                    Phim Trung Quốc mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "CN")?.Id)" class="view-all">Xem
+                    tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="empty-state">
+                <i class="fas fa-film"></i>
+                <p>Không có phim Trung Quốc nào hiện tại</p>
+            </div>
+        </section>
+    }
+
+    <!-- US-UK Movies Section -->
+    @{
+        var westernMovies = Model.Movies.Where(m => Model.Countries.Any(c => c.Id == m.CountryId && (c.Code == "US" ||
+        c.Code == "UK"))).Take(8).ToList();
+    }
+    @if (westernMovies.Any())
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    @* <div class="country-flag">🇺🇸</div> *@
+                    Phim US - Uk
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "US")?.Id)" class="view-all">Xem
+                    tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movie-grid">
+                @foreach (var movie in westernMovies)
+                {
+                    <div class="movie-card" onclick="location.href='/Movies/Details/@movie.Id'">
+                        <div class="movie-poster">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img src="@movie.PosterPath" alt="@movie.Title" />
+                            }
+                            else
+                            {
+                                <i class="fas fa-film"></i>
+                            }
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">@movie.Title</h3>
+                            <p class="movie-year">@movie.ReleaseYear</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    @* <div class="country-flag">🇺🇸</div> *@
+                    Phim US-UK mới
+                </h2>
+                <a href="/Movies?CountryId=@(Model.Countries.FirstOrDefault(c => c.Code == "US")?.Id)" class="view-all">Xem
+                    tất cả <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="empty-state">
+                <i class="fas fa-film"></i>
+                <p>Không có phim Mỹ - Anh nào hiện tại</p>
+            </div>
+        </section>
+    }
+
+    <!-- Footer -->
+    @* <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về CineViet</h3>
+                <p>CineViet - Nơi mang đến cho bạn những bộ phim chất lượng cao từ khắp nơi trên thế giới, hoàn toàn
+                    miễn phí.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Kết Nhanh</h3>
+                <ul>
+                    <li><a href="/">Trang Chủ</a></li>
+                    <li><a href="/Movies">Phim Lẻ</a></li>
+                    <li><a href="/Series">Phim Bộ</a></li>
+                    <li><a href="/Genres">Thể Loại</a></li>
+                    <li><a href="/Countries">Quốc Gia</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <p>Email: support@cineviet.com</p>
+                <p>Hotline: (+84) 123 456 789</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; @DateTime.Now.Year CineViet. All rights reserved.</p>
+        </div>
+    </footer> *@
+
+    <footer class="footer">
+        <!-- Banner cảnh báo/thông điệp đầu footer -->
+        <div class="footer-banner">
+            <span class="star">⭐</span>
+            <span>Hoàng Sa & Trường Sa là của Việt Nam!</span>
+        </div>
+
+        <div class="footer-content-wrapper">
+            <!-- Phần Logo và Social Media -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <!-- Placeholder cho logo RoPhim. Lý tưởng nhất là dùng SVG hoặc file ảnh PNG/WebP -->
+                    <div class="play-icon">
+                        <!-- Đây là phần biểu tượng play button + các đường cong vàng.
+                             Với CSS thuần khó tạo chính xác. Nên dùng SVG hoặc ảnh.
+                             Tôi sẽ mô phỏng đơn giản bằng CSS, hoặc bạn thay bằng thẻ <img>:
+                             <img src="path/to/rophim-logo-icon.png" alt="RoPhim Icon" class="logo-img">
+                        -->
+                    </div>
+                    <div class="logo-text">
+                        <h3>RoPhim</h3>
+                        <p>Phim hay cả rổ</p>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a> <!-- Biểu tượng X (Twitter mới) -->
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-airbnb"></i></a> <!-- Icon này hơi giống, vì icon trong hình không rõ -->
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Phần Links Điều hướng và Danh mục -->
+            <div class="footer-links-and-categories">
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="#">Hỏi-Đáp</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-categories">
+                    <ul>
+                        <li><a href="#">Dongphim</a></li>
+                        <li><a href="#">Ghienphim</a></li>
+                        <li><a href="#">Motphim</a></li>
+                        <li><a href="#">Subnhanh</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phần Mô tả và Bản quyền -->
+            <div class="footer-description">
+                <p>RoPhim – Phim hay cả rổ - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng tiếng full HD. Kho phim mới khổng lồ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung Quốc, Thái Lan, Nhật Bản, Âu Mỹ… đa dạng thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2024 chất lượng 4K!</p>
+            </div>
+
+            <div class="footer-copyright">
+                <p>© 2024 RoPhim</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

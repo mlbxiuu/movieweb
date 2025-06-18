@@ -1,0 +1,70 @@
+@model IEnumerable<MovieWebsite.Models.Genre>
+
+@{
+    ViewData["Title"] = "Quản Lý Thể Loại";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="admin-dashboard">
+    <h4>@ViewData["Title"]</h4>
+    
+    <p>
+        
+        <a asp-area="Admin" asp-controller="Genres" asp-action="Create" class="btn-add" style="text-decoration: none;">Thêm Thể Loại Mới</a>
+    </p>
+
+    <!-- Hiển thị thông báo -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <table class="management-table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Color)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>
+                        <span class="color-preview" style="background-color: @item.Color"></span>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>
+                      
+                        <a asp-area="Admin" asp-controller="Genres" asp-action="Edit" asp-route-id="@item.Id" class="btn-action update">Sửa</a>
+                        <a asp-area="Admin" asp-controller="Genres" asp-action="Delete" asp-route-id="@item.Id" class="btn-action delete">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@* Thêm CSS cho alert nếu cần *@
+<style>
+    .color-preview {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 5px;
+        border: 1px solid #ccc;
+    }
+    .alert { padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; }
+    .alert-success { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
+    .alert-danger { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
+</style>

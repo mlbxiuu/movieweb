@@ -1,0 +1,285 @@
+@model MovieViewModel
+
+@{
+    ViewData["Title"] = "Thêm Phim Mới";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Thêm Phim Mới</h2>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="row">
+            <!-- Title -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Title" class="form-label">Tên phim</label>
+                <input asp-for="Title" class="form-control" required />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <!-- English Title -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="EnglishTitle" class="form-label">Tên tiếng Anh</label>
+                <input asp-for="EnglishTitle" class="form-control" />
+                <span asp-validation-for="EnglishTitle" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Mô tả</label>
+            <textarea asp-for="Description" class="form-control" rows="5" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <!-- Release Year -->
+            <div class="col-md-4 mb-3">
+                <label asp-for="ReleaseYear" class="form-label">Năm phát hành</label>
+                <input asp-for="ReleaseYear" type="number" class="form-control" min="1900" max="@DateTime.Now.Year" required />
+                <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+            </div>
+
+            <!-- Country -->
+            <div class="col-md-4 mb-3">
+                <label asp-for="CountryId" class="form-label">Quốc gia</label>
+                <select asp-for="CountryId" class="form-select" required>
+                    <option value="">Chọn quốc gia</option>
+                    @foreach (var country in Model.Countries)
+                    {
+                        <option value="@country.Id">@country.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CountryId" class="text-danger"></span>
+            </div>
+
+            <!-- Genre -->
+            <div class="col-md-4 mb-3">
+                <label asp-for="GenreId" class="form-label">Thể loại chính</label>
+                <select asp-for="GenreId" class="form-select" required>
+                    <option value="">Chọn thể loại</option>
+                    @foreach (var genre in Model.Genres)
+                    {
+                        <option value="@genre.Id">@genre.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Additional Genres -->
+        <div class="mb-3">
+            <label asp-for="SelectedGenreIds" class="form-label">Thể loại bổ sung</label>
+            <select asp-for="SelectedGenreIds" class="form-select" multiple>
+                @foreach (var genre in Model.Genres)
+                {
+                    <option value="@genre.Id">@genre.Name</option>
+                }
+            </select>
+            <span asp-validation-for="SelectedGenreIds" class="text-danger"></span>
+            <small class="form-text text-muted">Giữ Ctrl (Windows) hoặc Cmd (Mac) để chọn nhiều thể loại.</small>
+        </div>
+
+        <div class="row">
+            <!-- Director -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Director" class="form-label">Đạo diễn</label>
+                <input asp-for="Director" class="form-control" required />
+                <span asp-validation-for="Director" class="text-danger"></span>
+            </div>
+
+            <!-- Cast -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Cast" class="form-label">Diễn viên</label>
+                <input asp-for="Cast" class="form-control" required />
+                <span asp-validation-for="Cast" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Total Episodes -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="TotalEpisodes" class="form-label">Tổng số tập</label>
+                <input asp-for="TotalEpisodes" type="number" class="form-control" min="1" required />
+                <span asp-validation-for="TotalEpisodes" class="text-danger"></span>
+            </div>
+
+            <!-- Is Completed -->
+            <div class="col-md-6 mb-3">
+                <div class="form-check mt-4">
+                    <input asp-for="IsCompleted" class="form-check-input" type="checkbox" />
+                    <label asp-for="IsCompleted" class="form-check-label">Đã hoàn thành</label>
+                    <span asp-validation-for="IsCompleted" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Poster Upload -->
+        <div class="mb-3">
+            <label asp-for="PosterFile" class="form-label">Poster (JPEG, PNG, JPG, GIF, tối đa 5MB)</label>
+            <input asp-for="PosterFile" type="file" class="form-control" accept="image/jpeg,image/png,image/jpg,image/gif" required />
+            <span asp-validation-for="PosterFile" class="text-danger"></span>
+        </div>
+
+        <!-- Trailer Upload -->
+        <div class="mb-3">
+            <label asp-for="TrailerFile" class="form-label">Trailer (MP4, MOV, AVI, tối đa 100MB, tùy chọn)</label>
+            <input asp-for="TrailerFile" type="file" class="form-control" accept="video/mp4,video/quicktime,video/x-msvideo" />
+            <span asp-validation-for="TrailerFile" class="text-danger"></span>
+        </div>
+
+        <!-- Episode Uploads -->
+        <div class="mb-3">
+            <h4>Tập phim</h4>
+            <p class="text-muted">Tải lên video và thông tin cho từng tập phim (MP4, MOV, AVI, tối đa 100MB mỗi tập). Để trống nếu là phim lẻ.</p>
+            <div id="episode-container">
+                <!-- Episodes will be dynamically added via JavaScript -->
+            </div>
+            <button type="button" class="btn btn-secondary mt-2" id="add-episode">Thêm tập phim</button>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Thêm Phim</button>
+            <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Bootstrap form validation
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+
+        // Dynamic episode fields
+        document.getElementById('add-episode').addEventListener('click', function () {
+            const container = document.getElementById('episode-container');
+            const index = container.children.length;
+            const episodeHtml = `
+                <div class="card mb-3 episode-item">
+                    <div class="card-body">
+                        <h5>Tập ${index + 1}</h5>
+                        <input type="hidden" name="Episodes[${index}].MovieId" value="0" />
+                        <div class="mb-3">
+                            <label class="form-label" for="Episodes_${index}__EpisodeNumber">Số tập</label>
+                            <input type="number" class="form-control" name="Episodes[${index}].EpisodeNumber" value="${index + 1}" min="1" required />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Episodes[${index}].EpisodeNumber" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="Episodes_${index}__Title">Tên tập</label>
+                            <input type="text" class="form-control" name="Episodes[${index}].Title" required />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Episodes[${index}].Title" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="Episodes_${index}__Description">Mô tả</label>
+                            <textarea class="form-control" name="Episodes[${index}].Description" rows="3"></textarea>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Episodes[${index}].Description" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="Episodes_${index}__Duration">Thời lượng (phút)</label>
+                            <input type="number" class="form-control" name="Episodes[${index}].Duration" min="1" max="600" required />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Episodes[${index}].Duration" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="Episodes_${index}__ReleaseDate">Ngày phát hành</label>
+                            <input type="date" class="form-control" name="Episodes[${index}].ReleaseDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Episodes[${index}].ReleaseDate" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="Episodes_${index}__VideoFile">Video tập (MP4, MOV, AVI, tối đa 100MB)</label>
+                            <input type="file" class="form-control" name="Episodes[${index}].VideoFile" accept="video/mp4,video/quicktime,video/x-msvideo" required />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Episodes[${index}].VideoFile" data-valmsg-replace="true"></span>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-sm remove-episode">Xóa tập</button>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', episodeHtml);
+        });
+
+        // Remove episode
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-episode')) {
+                e.target.closest('.episode-item').remove();
+                // Update episode numbers
+                const episodes = document.querySelectorAll('.episode-item');
+                episodes.forEach((episode, index) => {
+                    const inputs = episode.querySelectorAll('input, textarea');
+                    inputs.forEach(input => {
+                        const name = input.name.replace(/Episodes\[\d+\]/, `Episodes[${index}]`);
+                        input.name = name;
+                        input.id = input.id ? input.id.replace(/Episodes_\d+__/, `Episodes_${index}__`) : input.id;
+                    });
+                    episode.querySelector('h5').textContent = `Tập ${index + 1}`;
+                });
+            }
+        });
+
+        // Validate TotalEpisodes and Episode Videos on submit
+        document.querySelector('form').addEventListener('submit', function (e) {
+            const totalEpisodes = parseInt(document.querySelector('#TotalEpisodes').value, 10);
+            const episodeItems = document.querySelectorAll('.episode-item');
+            const episodeCount = episodeItems.length;
+
+            if (episodeCount > totalEpisodes) {
+                e.preventDefault();
+                alert('Số lượng tập phim tải lên vượt quá tổng số tập đã khai báo.');
+                return;
+            }
+
+            // Ensure episode fields are valid
+            episodeItems.forEach((episode, index) => {
+                const videoInput = episode.querySelector(`input[name="Episodes[${index}].VideoFile"]`);
+                const titleInput = episode.querySelector(`input[name="Episodes[${index}].Title"]`);
+                const durationInput = episode.querySelector(`input[name="Episodes[${index}].Duration"]`);
+                const releaseDateInput = episode.querySelector(`input[name="Episodes[${index}].ReleaseDate"]`);
+
+                if (!videoInput.files.length) {
+                    e.preventDefault();
+                    alert(`Vui lòng chọn file video cho tập ${index + 1}.`);
+                }
+                if (!titleInput.value.trim()) {
+                    e.preventDefault();
+                    alert(`Vui lòng nhập tên cho tập ${index + 1}.`);
+                }
+                if (!durationInput.value || parseInt(durationInput.value) < 1) {
+                    e.preventDefault();
+                    alert(`Vui lòng nhập thời lượng hợp lệ cho tập ${index + 1}.`);
+                }
+                if (!releaseDateInput.value) {
+                    e.preventDefault();
+                    alert(`Vui lòng chọn ngày phát hành cho tập ${index + 1}.`);
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,259 @@
+/* General Body and Container Styling */
+body {
+  background-color: #1a1e27; /* Màu nền tối giống trong ảnh */
+  color: #fff; /* Màu chữ mặc định trắng */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Font hiện đại, dễ đọc */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Ngăn chặn thanh cuộn ngang không mong muốn trên toàn trang */
+}
+
+/* Section Container - The entire row with title and movie grid */
+.movie-section {
+  display: flex; /* Dùng flexbox để xếp tiêu đề và lưới phim cạnh nhau */
+  align-items: flex-start; /* Căn chỉnh các item theo chiều dọc lên trên */
+  padding: 40px; /* Khoảng cách xung quanh toàn bộ phần */
+  gap: 40px; /* Khoảng cách giữa phần header bên trái và lưới phim */
+  position: relative; /* Dùng cho các phần tử tuyệt đối bên trong nếu có (ví dụ: nút cuộn) */
+}
+
+/* Section Header - "Phim Trung Quốc mới" and "Xem toàn bộ" */
+.section-header {
+  display: flex;
+  flex-direction: column; /* Xếp tiêu đề và link "Xem toàn bộ" theo chiều dọc */
+  align-items: flex-start; /* Căn chỉnh nội dung sang trái */
+  min-width: 250px; /* Đặt chiều rộng tối thiểu cho phần này để giữ không gian */
+  max-width: 300px; /* Chiều rộng tối đa */
+  flex-shrink: 0; /* Ngăn chặn phần này bị co lại khi không gian hẹp */
+  margin-top: 20px; /* Điều chỉnh vị trí dọc */
+}
+
+.section-title {
+  font-size: 3em; /* Kích thước chữ lớn cho tiêu đề chính */
+  font-weight: 700; /* Đậm */
+  margin-bottom: 15px; /* Khoảng cách với link "Xem toàn bộ" */
+  line-height: 1.2; /* Tối ưu khoảng cách dòng cho tiêu đề đa dòng */
+  color: #ffc107; /* Màu vàng cam giống trong ảnh */
+  /* Có thể thêm gradient nếu muốn giống hệt ảnh:
+    background: linear-gradient(90deg, #ffc107, #ff6f00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    */
+}
+
+.view-all {
+  color: #bbb; /* Màu chữ xám nhạt cho link */
+  text-decoration: none; /* Bỏ gạch chân */
+  font-size: 1.1em;
+  display: flex; /* Dùng flexbox để căn chỉnh chữ và icon */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  gap: 8px; /* Khoảng cách giữa chữ và icon */
+  transition: color 0.3s ease; /* Hiệu ứng chuyển động mượt mà khi hover */
+}
+
+.view-all:hover {
+  color: #fff; /* Chữ trắng khi hover */
+}
+
+/* Movie Grid - Container for horizontal scrolling movie cards */
+.movie-grid {
+  display: flex; /* Dùng flexbox để xếp các thẻ phim theo chiều ngang */
+  overflow-x: auto; /* Cho phép cuộn ngang khi nội dung tràn */
+  -webkit-overflow-scrolling: touch; /* Cải thiện cuộn trên thiết bị di động iOS */
+  padding-bottom: 20px; /* Tạo không gian cho thanh cuộn ngang */
+  gap: 20px; /* Khoảng cách giữa các thẻ phim */
+  flex-grow: 1; /* Cho phép lưới phim chiếm hết không gian còn lại */
+  padding-right: 50px; /* Khoảng đệm bên phải để có thể cuộn qua mục cuối cùng */
+  scroll-snap-type: x mandatory; /* (Tùy chọn) Thanh cuộn sẽ "snap" vào các thẻ phim */
+}
+
+/* Hide scrollbar for aesthetics (but still allows scrolling) */
+.movie-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.movie-grid::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2); /* Màu của "cục kéo" thanh cuộn */
+  border-radius: 10px;
+}
+
+.movie-grid::-webkit-scrollbar-track {
+  background-color: transparent; /* Nền của thanh cuộn trong suốt */
+}
+
+/* Individual Movie Card */
+.movie-card {
+  background-color: #242933; /* Màu nền đậm hơn cho từng thẻ phim */
+  border-radius: 10px; /* Bo tròn góc cho toàn bộ thẻ phim */
+  overflow: hidden; /* Đảm bảo các nội dung bên trong cũng được bo tròn góc */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Đổ bóng nhẹ */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hiệu ứng hover mượt mà */
+  cursor: pointer; /* Thay đổi con trỏ thành biểu tượng bàn tay */
+  flex-shrink: 0; /* Quan trọng: Ngăn không cho các thẻ phim bị co lại */
+
+  /* ***** ĐIỀU CHỈNH CHÍNH Ở ĐÂY ***** */
+  width: 320px; /* Chiều rộng cố định cho mỗi thẻ phim. Điều chỉnh theo ý muốn */
+  /* Với width: 320px và tỷ lệ 16:9, ảnh sẽ có kích thước ~320x180px */
+  /* Nếu bạn muốn ảnh rộng hơn/hẹp hơn, hãy thay đổi giá trị này */
+  /* ********************************* */
+
+  scroll-snap-align: start; /* (Tùy chọn) Giúp snap khi cuộn */
+}
+
+.movie-card:hover {
+  transform: translateY(-5px); /* Nâng nhẹ thẻ phim lên khi hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Đổ bóng đậm hơn khi hover */
+}
+
+/* Movie Poster Container */
+.movie-poster {
+  position: relative; /* Để có thể đặt các tag "PD. XX" tuyệt đối bên trong */
+  width: 100%;
+
+  /* ***** ĐIỀU CHỈNH CHÍNH Ở ĐÂY ***** */
+  /* Tỷ lệ khung hình ngang (16:9). Chiều cao là 56.25% của chiều rộng */
+  padding-top: 56.25%;
+  /* Nếu bạn muốn tỷ lệ khác (ví dụ 4:3), hãy dùng padding-top: 75%; */
+  /* ********************************* */
+
+  background-color: #333; /* Màu nền dự phòng nếu không có ảnh */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Đảm bảo hình ảnh được bo tròn góc */
+}
+
+.movie-poster img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo hình ảnh phủ kín không gian mà không bị méo */
+  border-radius: 10px 10px 0 0; /* Bo tròn góc trên của poster */
+}
+
+/* Placeholder icon if no image available */
+.movie-poster .fas.fa-film {
+  font-size: 4em;
+  color: #666;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Episode Tags (PD. XX, TM. XX) - You need to add these spans/divs in your HTML */
+/* Example HTML for tags:
+<div class="movie-poster">
+    <img src="@movie.PosterPath" alt="@movie.Title" />
+    <span class="episode-tag released">PD. @movie.EpisodesReleased</span>
+    <span class="episode-tag total">TM. @movie.TotalEpisodes</span>
+</div>
+*/
+.episode-tag {
+  position: absolute;
+  top: 10px;
+  padding: 5px 8px;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 5px;
+  color: #fff;
+  z-index: 10; /* Đảm bảo tag nằm trên hình ảnh */
+}
+
+.episode-tag.released {
+  left: 10px;
+  background-color: #6c757d; /* Màu xám cho "PD." */
+}
+
+.episode-tag.total {
+  right: 10px;
+  background-color: #28a745; /* Màu xanh lá cho "TM." */
+}
+
+/* Movie Info - Title and Year/English Title */
+.movie-info {
+  padding: 15px; /* Khoảng đệm bên trong phần thông tin */
+  text-align: left; /* Căn chỉnh chữ sang trái */
+  min-height: 80px; /* Đảm bảo chiều cao tối thiểu để các thẻ trông đồng đều (có thể điều chỉnh) */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.movie-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #fff;
+  white-space: nowrap; /* Ngăn tiêu đề xuống dòng */
+  overflow: hidden; /* Ẩn phần chữ bị tràn */
+  text-overflow: ellipsis; /* Thêm dấu "..." khi chữ bị tràn */
+}
+
+.movie-year {
+  /* Đây sẽ là phần hiển thị tiêu đề tiếng Anh */
+  font-size: 0.9em;
+  color: #a0a0a0; /* Màu xám nhạt hơn cho phụ đề */
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive Design - Adjustments for smaller screens */
+@media (max-width: 992px) {
+  .movie-section {
+    flex-direction: column; /* Xếp tiêu đề và lưới phim theo chiều dọc trên màn hình nhỏ */
+    align-items: center; /* Căn giữa nội dung */
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .section-header {
+    min-width: unset; /* Xóa giới hạn chiều rộng tối thiểu */
+    max-width: 100%; /* Cho phép chiếm toàn bộ chiều rộng */
+    text-align: center;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .section-title {
+    font-size: 2.5em; /* Giảm kích thước tiêu đề */
+  }
+
+  .movie-grid {
+    width: 100%; /* Cho phép lưới phim chiếm toàn bộ chiều rộng có thể */
+    padding-right: 20px; /* Giảm khoảng đệm phải */
+  }
+
+  .movie-card {
+    width: 280px; /* Điều chỉnh chiều rộng thẻ phim trên màn hình tablet */
+  }
+}
+
+@media (max-width: 576px) {
+  .movie-section {
+    padding: 15px;
+  }
+  .section-title {
+    font-size: 2em;
+  }
+  .view-all {
+    font-size: 1em;
+  }
+  .movie-card {
+    width: 220px; /* Điều chỉnh chiều rộng thẻ phim trên màn hình điện thoại */
+  }
+  .movie-info {
+    min-height: 70px; /* Điều chỉnh chiều cao thông tin */
+  }
+  .movie-title {
+    font-size: 1em;
+  }
+  .movie-year {
+    font-size: 0.8em;
+  }
+}
