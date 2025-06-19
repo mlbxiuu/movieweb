@@ -17,6 +17,31 @@ namespace MovieWebsite.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
+            modelBuilder.Entity("MovieWebsite.Models.ChatMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChatMessages");
+                });
+
             modelBuilder.Entity("MovieWebsite.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -69,7 +94,7 @@ namespace MovieWebsite.Migrations
                         {
                             Id = 1,
                             Content = "Phim này thực sự làm mình khóc rất nhiều!",
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(510),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9987),
                             Dislikes = 2,
                             Likes = 50,
                             MovieId = 1,
@@ -80,7 +105,7 @@ namespace MovieWebsite.Migrations
                         {
                             Id = 2,
                             Content = "Cảm ơn Trấn Thành đã mang đến một bộ phim ý nghĩa!",
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(520),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9990),
                             Dislikes = 1,
                             Likes = 30,
                             MovieId = 1,
@@ -92,7 +117,7 @@ namespace MovieWebsite.Migrations
                         {
                             Id = 3,
                             Content = "Tập 1 rất hấp dẫn, chemistry giữa hai diễn viên chính đỉnh cao!",
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(520),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9992),
                             Dislikes = 0,
                             EpisodeId = 1,
                             Likes = 40,
@@ -104,7 +129,7 @@ namespace MovieWebsite.Migrations
                         {
                             Id = 4,
                             Content = "Tập 2 càng cuốn, không thể rời mắt!",
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(530),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9994),
                             Dislikes = 1,
                             EpisodeId = 2,
                             Likes = 35,
@@ -227,84 +252,84 @@ namespace MovieWebsite.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(410),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9935),
                             Description = "Yoon Se-ri vô tình hạ cánh xuống Bắc Triều Tiên sau một tai nạn.",
                             Duration = 70,
                             EpisodeNumber = 1,
                             MovieId = 2,
                             ReleaseDate = new DateTime(2019, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Tập 1: Cuộc gặp gỡ định mệnh",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(410),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9936),
                             VideoPath = "/videos/1.mp4",
                             Views = 10000
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(420),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9938),
                             Description = "Ri Jeong-hyeok giúp Se-ri tìm cách trở về Hàn Quốc.",
                             Duration = 65,
                             EpisodeNumber = 2,
                             MovieId = 2,
                             ReleaseDate = new DateTime(2019, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Tập 2: Kế hoạch trốn thoát",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(420),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9939),
                             VideoPath = "/videos/1.mp4",
                             Views = 9500
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(430),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9941),
                             Description = "Se-ri dần thích nghi với cuộc sống ở Bắc Triều Tiên.",
                             Duration = 68,
                             EpisodeNumber = 3,
                             MovieId = 2,
                             ReleaseDate = new DateTime(2019, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Tập 3: Bí mật bị hé lộ",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(430),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9941),
                             VideoPath = "/videos/1.mp4",
                             Views = 9000
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(430),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9943),
                             Description = "Tình cảm giữa Se-ri và Jeong-hyeok bắt đầu phát triển.",
                             Duration = 72,
                             EpisodeNumber = 4,
                             MovieId = 2,
                             ReleaseDate = new DateTime(2019, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Tập 4: Tình cảm nảy nở",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(430),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9944),
                             VideoPath = "/videos/1.mp4",
                             Views = 8800
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(440),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9946),
                             Description = "Se-ri đối mặt với những nguy hiểm mới ở Bắc Triều Tiên.",
                             Duration = 70,
                             EpisodeNumber = 5,
                             MovieId = 2,
                             ReleaseDate = new DateTime(2019, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Tập 5: Thách thức mới",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(440),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9946),
                             VideoPath = "/videos/1.mp4",
                             Views = 8500
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(450),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9948),
                             Description = "Jeong-hyeok lên kế hoạch bảo vệ Se-ri.",
                             Duration = 67,
                             EpisodeNumber = 6,
                             MovieId = 2,
                             ReleaseDate = new DateTime(2019, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Tập 6: Hành trình nguy hiểm",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(450),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9949),
                             VideoPath = "/videos/1.mp4",
                             Views = 8200
                         });
@@ -470,7 +495,7 @@ namespace MovieWebsite.Migrations
                             AverageRating = 8.5,
                             Cast = "Trấn Thành, Tuấn Trần, Ngô Kiến Huy",
                             CountryId = 1,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(330),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9890),
                             Description = "Bộ phim kể về cuộc sống của một gia đình lao động nghèo ở Sài Gòn.",
                             Director = "Trấn Thành",
                             EnglishTitle = "Old Father",
@@ -482,7 +507,7 @@ namespace MovieWebsite.Migrations
                             Title = "Bố Già",
                             TotalEpisodes = 1,
                             TrailerPath = "/videos/1.mp4",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(330),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9890),
                             Views = 150000
                         },
                         new
@@ -491,7 +516,7 @@ namespace MovieWebsite.Migrations
                             AverageRating = 9.0,
                             Cast = "Hyun Bin, Son Ye-jin",
                             CountryId = 2,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(340),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9895),
                             Description = "Câu chuyện tình yêu giữa một nữ thừa kế Hàn Quốc và một sĩ quan Bắc Triều Tiên.",
                             Director = "Lee Jeong-hyo",
                             EnglishTitle = "Crash Landing on You",
@@ -503,7 +528,7 @@ namespace MovieWebsite.Migrations
                             Title = "Hạ Cánh Nơi Anh",
                             TotalEpisodes = 16,
                             TrailerPath = "/videos/2.mp4",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(340),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9895),
                             Views = 250000
                         },
                         new
@@ -512,7 +537,7 @@ namespace MovieWebsite.Migrations
                             AverageRating = 9.1999999999999993,
                             Cast = "Song Kang-ho, Lee Sun-kyun, Cho Yeo-jeong",
                             CountryId = 2,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(340),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9898),
                             Description = "Một gia đình nghèo tìm cách thâm nhập vào cuộc sống của một gia đình giàu có.",
                             Director = "Bong Joon-ho",
                             EnglishTitle = "Parasite",
@@ -524,7 +549,7 @@ namespace MovieWebsite.Migrations
                             Title = "Ký Sinh Trùng",
                             TotalEpisodes = 1,
                             TrailerPath = "/videos/3.mp4",
-                            UpdatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(350),
+                            UpdatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9899),
                             Views = 300000
                         });
                 });
@@ -615,7 +640,7 @@ namespace MovieWebsite.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(480),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9966),
                             MovieId = 1,
                             Review = "Phim rất cảm động, diễn xuất của Trấn Thành tuyệt vời!",
                             Score = 8,
@@ -625,7 +650,7 @@ namespace MovieWebsite.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(480),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9968),
                             MovieId = 1,
                             Review = "Cốt truyện gần gũi, phản ánh đúng cuộc sống.",
                             Score = 9,
@@ -635,13 +660,43 @@ namespace MovieWebsite.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 6, 11, 10, 48, 46, 121, DateTimeKind.Local).AddTicks(490),
+                            CreatedAt = new DateTime(2025, 6, 18, 22, 37, 41, 334, DateTimeKind.Local).AddTicks(9969),
                             MovieId = 3,
                             Review = "Một kiệt tác của điện ảnh Hàn Quốc!",
                             Score = 10,
                             UserEmail = "levanc@example.com",
                             UserName = "LeVanC"
                         });
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.WatchPartyRoom", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("InviteCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("WatchPartyRooms");
                 });
 
             modelBuilder.Entity("MovieWebsite.Models.Comment", b =>
@@ -721,6 +776,17 @@ namespace MovieWebsite.Migrations
                 {
                     b.HasOne("MovieWebsite.Models.Movie", "Movie")
                         .WithMany("Ratings")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MovieWebsite.Models.WatchPartyRoom", b =>
+                {
+                    b.HasOne("MovieWebsite.Models.Movie", "Movie")
+                        .WithMany()
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

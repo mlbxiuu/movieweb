@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3eNLASWddps0wPIRNcopLHRjPEBlIfvBlgX6LE9oUFA=",
+  "Hash": "EPgfVDiMDmHKL4BQSICFavzEm4vTGnqIgMLN2AZeOns=",
   "Source": "MovieWebsite",
   "BasePath": "_content/MovieWebsite",
   "Mode": "Default",
@@ -1571,27 +1571,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250608.log",
-      "SourceId": "MovieWebsite",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\",
-      "BasePath": "_content/MovieWebsite",
-      "RelativePath": "Logs/app-20250608#[.{fingerprint}]?.log",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "zv3cscvw00",
-      "Integrity": "r9oQmb7Vg4kCr4Caf9p1MlqDdAszc5LOjfXrIQ9L7LA=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Logs\\app-20250608.log"
-    },
-    {
       "Identity": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250609.log",
       "SourceId": "MovieWebsite",
       "SourceType": "Discovered",
@@ -1711,11 +1690,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "sqpezizxcw",
-      "Integrity": "1HS8YxRgB/syMBuY1noHtn6R3kWd9X9NoyrcCaV5s4k=",
+      "Fingerprint": "kbskyou3pp",
+      "Integrity": "YC7RrFcHsl4TyibKloRJzvJSi1t8Asq/OSwCs44CjeQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Logs\\app-20250617.log"
+    },
+    {
+      "Identity": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250618.log",
+      "SourceId": "MovieWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\",
+      "BasePath": "_content/MovieWebsite",
+      "RelativePath": "Logs/app-20250618#[.{fingerprint}]?.log",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rdkws9o0wo",
+      "Integrity": "Lw/eftGIH7M3KUujT1en/mr5Orvwpkpp7HKgzscnwx4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Logs\\app-20250618.log"
     },
     {
       "Identity": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\episode_1_98b0941e-9e66-42d9-b03f-317d1182446a.mp4",
@@ -1737,6 +1737,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\episode_1_98b0941e-9e66-42d9-b03f-317d1182446a.mp4"
+    },
+    {
+      "Identity": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\episode_96c1625e-0399-444c-a79a-668c30e021bc.mp4",
+      "SourceId": "MovieWebsite",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\",
+      "BasePath": "_content/MovieWebsite",
+      "RelativePath": "Uploads/episode_96c1625e-0399-444c-a79a-668c30e021bc#[.{fingerprint}]?.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5vgcacyy3o",
+      "Integrity": "n4VPtuMXRn6tAvQKlPGmYEhIDiHDQNwv2LLIjoLkSnk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\episode_96c1625e-0399-444c-a79a-668c30e021bc.mp4"
     },
     {
       "Identity": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_46d6ecf1-2678-40de-a437-1438b30ecc97.jpg",
@@ -8023,88 +8044,6 @@
       ]
     },
     {
-      "Route": "Logs/app-20250608.log",
-      "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250608.log",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4678"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"r9oQmb7Vg4kCr4Caf9p1MlqDdAszc5LOjfXrIQ9L7LA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 08 Jun 2025 13:36:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-r9oQmb7Vg4kCr4Caf9p1MlqDdAszc5LOjfXrIQ9L7LA="
-        }
-      ]
-    },
-    {
-      "Route": "Logs/app-20250608.zv3cscvw00.log",
-      "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250608.log",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4678"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"r9oQmb7Vg4kCr4Caf9p1MlqDdAszc5LOjfXrIQ9L7LA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 08 Jun 2025 13:36:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "zv3cscvw00"
-        },
-        {
-          "Name": "label",
-          "Value": "Logs/app-20250608.log"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-r9oQmb7Vg4kCr4Caf9p1MlqDdAszc5LOjfXrIQ9L7LA="
-        }
-      ]
-    },
-    {
       "Route": "Logs/app-20250609.dcd0p5esk7.log",
       "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250609.log",
       "Selectors": [],
@@ -8515,6 +8454,51 @@
       ]
     },
     {
+      "Route": "Logs/app-20250617.kbskyou3pp.log",
+      "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250617.log",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "53705"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YC7RrFcHsl4TyibKloRJzvJSi1t8Asq/OSwCs44CjeQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Jun 2025 07:45:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kbskyou3pp"
+        },
+        {
+          "Name": "label",
+          "Value": "Logs/app-20250617.log"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YC7RrFcHsl4TyibKloRJzvJSi1t8Asq/OSwCs44CjeQ="
+        }
+      ]
+    },
+    {
       "Route": "Logs/app-20250617.log",
       "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250617.log",
       "Selectors": [],
@@ -8525,7 +8509,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "48823"
+          "Value": "53705"
         },
         {
           "Name": "Content-Type",
@@ -8533,11 +8517,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1HS8YxRgB/syMBuY1noHtn6R3kWd9X9NoyrcCaV5s4k=\""
+          "Value": "\"YC7RrFcHsl4TyibKloRJzvJSi1t8Asq/OSwCs44CjeQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Jun 2025 07:40:26 GMT"
+          "Value": "Tue, 17 Jun 2025 07:45:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8547,13 +8531,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1HS8YxRgB/syMBuY1noHtn6R3kWd9X9NoyrcCaV5s4k="
+          "Value": "sha256-YC7RrFcHsl4TyibKloRJzvJSi1t8Asq/OSwCs44CjeQ="
         }
       ]
     },
     {
-      "Route": "Logs/app-20250617.sqpezizxcw.log",
-      "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250617.log",
+      "Route": "Logs/app-20250618.log",
+      "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250618.log",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -8562,7 +8546,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "48823"
+          "Value": "98878"
         },
         {
           "Name": "Content-Type",
@@ -8570,11 +8554,48 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1HS8YxRgB/syMBuY1noHtn6R3kWd9X9NoyrcCaV5s4k=\""
+          "Value": "\"Lw/eftGIH7M3KUujT1en/mr5Orvwpkpp7HKgzscnwx4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Jun 2025 07:40:26 GMT"
+          "Value": "Wed, 18 Jun 2025 15:50:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Lw/eftGIH7M3KUujT1en/mr5Orvwpkpp7HKgzscnwx4="
+        }
+      ]
+    },
+    {
+      "Route": "Logs/app-20250618.rdkws9o0wo.log",
+      "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250618.log",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "98878"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Lw/eftGIH7M3KUujT1en/mr5Orvwpkpp7HKgzscnwx4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 15:50:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8584,15 +8605,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sqpezizxcw"
+          "Value": "rdkws9o0wo"
         },
         {
           "Name": "label",
-          "Value": "Logs/app-20250617.log"
+          "Value": "Logs/app-20250618.log"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1HS8YxRgB/syMBuY1noHtn6R3kWd9X9NoyrcCaV5s4k="
+          "Value": "sha256-Lw/eftGIH7M3KUujT1en/mr5Orvwpkpp7HKgzscnwx4="
         }
       ]
     },
@@ -8619,7 +8640,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Jun 2025 07:40:19 GMT"
+          "Value": "Wed, 18 Jun 2025 15:31:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8656,7 +8677,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Jun 2025 07:40:19 GMT"
+          "Value": "Wed, 18 Jun 2025 15:31:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8693,7 +8714,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Jun 2025 07:40:19 GMT"
+          "Value": "Wed, 18 Jun 2025 15:31:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8738,7 +8759,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 17 Jun 2025 07:40:19 GMT"
+          "Value": "Wed, 18 Jun 2025 15:31:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8839,6 +8860,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-kUMknBcme6j25hUqQZQRTgKwO3wlJjgW1vTrIIyStrU="
+        }
+      ]
+    },
+    {
+      "Route": "Uploads/episode_96c1625e-0399-444c-a79a-668c30e021bc.5vgcacyy3o.mp4",
+      "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\episode_96c1625e-0399-444c-a79a-668c30e021bc.mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3527209"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n4VPtuMXRn6tAvQKlPGmYEhIDiHDQNwv2LLIjoLkSnk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 03:10:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5vgcacyy3o"
+        },
+        {
+          "Name": "label",
+          "Value": "Uploads/episode_96c1625e-0399-444c-a79a-668c30e021bc.mp4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-n4VPtuMXRn6tAvQKlPGmYEhIDiHDQNwv2LLIjoLkSnk="
+        }
+      ]
+    },
+    {
+      "Route": "Uploads/episode_96c1625e-0399-444c-a79a-668c30e021bc.mp4",
+      "AssetFile": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\episode_96c1625e-0399-444c-a79a-668c30e021bc.mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3527209"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n4VPtuMXRn6tAvQKlPGmYEhIDiHDQNwv2LLIjoLkSnk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 03:10:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-n4VPtuMXRn6tAvQKlPGmYEhIDiHDQNwv2LLIjoLkSnk="
         }
       ]
     },

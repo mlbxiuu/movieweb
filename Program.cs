@@ -6,6 +6,8 @@ using Serilog;
 using Serilog.Extensions.Logging;
 using MovieWebsite.Data;
 
+using MovieWebsite.Hubs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Thiết lập Serilog để ghi log vào file
@@ -74,6 +76,9 @@ builder.Services.AddAuthentication("CookieAuth")
         options.ExpireTimeSpan = TimeSpan.FromDays(7);
     });
 
+
+builder.Services.AddSignalR();
+
 var app = builder.Build();
 
 // Cấu hình localization middleware
@@ -140,6 +145,7 @@ catch (Exception ex)
     app.Logger.LogError(ex, $"Lỗi khi tạo thư mục Logs tại: {logsPath}");
 }
 
+app.MapHub<WatchPartyHub>("/watchPartyHub"); // Định nghĩa endpoint cho hub
 // Cấu hình route mặc định
 app.MapControllerRoute(
     name: "default",
@@ -148,9 +154,11 @@ app.MapControllerRoute(
 //Route Admin
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Admin}/{action=Index}/{id?}");    
+    pattern: "{controller=Admin}/{action=Index}/{id?}");
 
 // Đảm bảo đóng Serilog khi ứng dụng dừng
 app.Lifetime.ApplicationStopped.Register(Log.CloseAndFlush);
+
+
 
 app.Run();

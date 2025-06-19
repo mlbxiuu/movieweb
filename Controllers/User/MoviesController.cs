@@ -446,6 +446,9 @@ namespace MovieWebsite.Controllers
                     return NotFound();
                 }
 
+                // === GÁN ID PHIM VÀO VIEWBAG ===
+                ViewBag.CurrentMovieId = movie.Id;
+
                 // Increment views
                 movie.Views++; // Fixed line
                 await _context.SaveChangesAsync();
@@ -486,146 +489,146 @@ namespace MovieWebsite.Controllers
 
         // GET: Movies/Watch/{movieId}/{episodeNumber}
         public async Task<IActionResult> Watch(int movieId, int episodeNumber)
-{
-    try
-    {
-        // Fetch movie with related data
-        var movie = await _context.Movies
-            .Include(m => m.Episodes)
-            .Include(m => m.Country)
-            .Include(m => m.Genre)
-            .Include(m => m.Ratings)
-            .Include(m => m.Comments)
-            .FirstOrDefaultAsync(m => m.Id == movieId);
-
-        if (movie == null)
         {
-            _logger.LogWarning("Movie not found with ID: {MovieId}", movieId);
-            return NotFound();
-        }
-
-        // Find the specific episode
-        var episode = movie.Episodes.FirstOrDefault(e => e.EpisodeNumber == episodeNumber);
-        if (episode == null)
-        {
-            _logger.LogWarning("Episode {EpisodeNumber} not found for movie ID: {MovieId}", episodeNumber, movieId);
-            return NotFound();
-        }
-
-        // Increment episode views
-        episode.Views++;
-        await _context.SaveChangesAsync();
-
-        // Check if the episode is scheduled to air in the future
-        var currentDateTime = DateTime.Now; // 02:48 PM +07, June 09, 2025
-        var nextEpisode = movie.Episodes
-            .Where(e => e.EpisodeNumber > episodeNumber && e.ReleaseDate > currentDateTime)
-            .OrderBy(e => e.ReleaseDate)
-            .FirstOrDefault();
-
-        var viewModel = new MovieDetailViewModel
-        {
-            Movie = movie,
-            Episodes = movie.Episodes.OrderBy(e => e.EpisodeNumber).ToList(),
-            Ratings = movie.Ratings.ToList(),
-            Comments = movie.Comments.Where(c => c.EpisodeId == episode.Id).ToList(),
-            RelatedMovies = await _context.Movies
-                .Where(m => m.GenreId == movie.GenreId && m.Id != movieId)
-                .Take(4)
-                .ToListAsync(),
-            NewRating = new RatingViewModel { MovieId = movie.Id },
-            NewComment = new CommentViewModel { MovieId = movie.Id, EpisodeId = episode.Id }
-        };
-
-        // Set notification for the next episode if it exists and is airing soon
-        if (nextEpisode != null)
-        {
-            var timeUntilAir = nextEpisode.ReleaseDate - currentDateTime;
-            if (timeUntilAir.TotalHours <= 24) // Notify if within 24 hours
+            try
             {
-                TempData["EpisodeNotification"] = $"Tập {nextEpisode.EpisodeNumber} sẽ phát sóng vào {nextEpisode.ReleaseDate:dd/MM/yyyy HH:mm}.";
-            }
-        }
+                // Fetch movie with related data
+                var movie = await _context.Movies
+                    .Include(m => m.Episodes)
+                    .Include(m => m.Country)
+                    .Include(m => m.Genre)
+                    .Include(m => m.Ratings)
+                    .Include(m => m.Comments)
+                    .FirstOrDefaultAsync(m => m.Id == movieId);
 
-        ViewData["CurrentEpisode"] = episode;
-        return View(viewModel);
-    }
-    catch (Exception ex)
-    {
-        _logger.LogError(ex, "Error loading watch page for movie ID: {MovieId}, episode: {EpisodeNumber}", movieId, episodeNumber);
-        TempData["ErrorMessage"] = "Đã xảy ra lỗi khi tải trang xem phim";
-        return RedirectToAction(nameof(Details), new { id = movieId });
-    }
-}
-
-
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> AddComment(CommentViewModel commentVM)
-{
-    try
-    {
-        if (ModelState.IsValid)
-        {
-            var comment = new Comment
-            {
-                MovieId = commentVM.MovieId,
-                EpisodeId = commentVM.EpisodeId,
-                UserName = commentVM.UserName,
-                UserEmail = commentVM.UserEmail,
-                Content = commentVM.Content,
-                ParentCommentId = commentVM.ParentCommentId,
-                CreatedAt = DateTime.Now,
-                Likes = 0,
-                Dislikes = 0
-            };
-
-            _context.Comments.Add(comment);
-            await _context.SaveChangesAsync();
-
-            TempData["SuccessMessage"] = "Đã thêm bình luận thành công!";
-            if (commentVM.EpisodeId.HasValue)
-            {
-                // Redirect to Watch page for episode-specific comments
-                var episode = await _context.Episodes
-                    .FirstOrDefaultAsync(e => e.Id == commentVM.EpisodeId);
-                if (episode != null)
+                if (movie == null)
                 {
-                    return RedirectToAction(nameof(Watch), new { movieId = commentVM.MovieId, episodeNumber = episode.EpisodeNumber });
+                    _logger.LogWarning("Movie not found with ID: {MovieId}", movieId);
+                    return NotFound();
                 }
+
+                // Find the specific episode
+                var episode = movie.Episodes.FirstOrDefault(e => e.EpisodeNumber == episodeNumber);
+                if (episode == null)
+                {
+                    _logger.LogWarning("Episode {EpisodeNumber} not found for movie ID: {MovieId}", episodeNumber, movieId);
+                    return NotFound();
+                }
+
+                // Increment episode views
+                episode.Views++;
+                await _context.SaveChangesAsync();
+
+                // Check if the episode is scheduled to air in the future
+                var currentDateTime = DateTime.Now; // 02:48 PM +07, June 09, 2025
+                var nextEpisode = movie.Episodes
+                    .Where(e => e.EpisodeNumber > episodeNumber && e.ReleaseDate > currentDateTime)
+                    .OrderBy(e => e.ReleaseDate)
+                    .FirstOrDefault();
+
+                var viewModel = new MovieDetailViewModel
+                {
+                    Movie = movie,
+                    Episodes = movie.Episodes.OrderBy(e => e.EpisodeNumber).ToList(),
+                    Ratings = movie.Ratings.ToList(),
+                    Comments = movie.Comments.Where(c => c.EpisodeId == episode.Id).ToList(),
+                    RelatedMovies = await _context.Movies
+                        .Where(m => m.GenreId == movie.GenreId && m.Id != movieId)
+                        .Take(4)
+                        .ToListAsync(),
+                    NewRating = new RatingViewModel { MovieId = movie.Id },
+                    NewComment = new CommentViewModel { MovieId = movie.Id, EpisodeId = episode.Id }
+                };
+
+                // Set notification for the next episode if it exists and is airing soon
+                if (nextEpisode != null)
+                {
+                    var timeUntilAir = nextEpisode.ReleaseDate - currentDateTime;
+                    if (timeUntilAir.TotalHours <= 24) // Notify if within 24 hours
+                    {
+                        TempData["EpisodeNotification"] = $"Tập {nextEpisode.EpisodeNumber} sẽ phát sóng vào {nextEpisode.ReleaseDate:dd/MM/yyyy HH:mm}.";
+                    }
+                }
+
+                ViewData["CurrentEpisode"] = episode;
+                return View(viewModel);
             }
-            // Redirect to Details page for movie-wide comments
-            return RedirectToAction(nameof(Details), new { id = commentVM.MovieId });
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading watch page for movie ID: {MovieId}, episode: {EpisodeNumber}", movieId, episodeNumber);
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi tải trang xem phim";
+                return RedirectToAction(nameof(Details), new { id = movieId });
+            }
         }
 
-        TempData["ErrorMessage"] = "Vui lòng kiểm tra lại thông tin bình luận";
-        if (commentVM.EpisodeId.HasValue)
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddComment(CommentViewModel commentVM)
         {
-            var episode = await _context.Episodes
-                .FirstOrDefaultAsync(e => e.Id == commentVM.EpisodeId);
-            if (episode != null)
+            try
             {
-                return RedirectToAction(nameof(Watch), new { movieId = commentVM.MovieId, episodeNumber = episode.EpisodeNumber });
+                if (ModelState.IsValid)
+                {
+                    var comment = new Comment
+                    {
+                        MovieId = commentVM.MovieId,
+                        EpisodeId = commentVM.EpisodeId,
+                        UserName = commentVM.UserName,
+                        UserEmail = commentVM.UserEmail,
+                        Content = commentVM.Content,
+                        ParentCommentId = commentVM.ParentCommentId,
+                        CreatedAt = DateTime.Now,
+                        Likes = 0,
+                        Dislikes = 0
+                    };
+
+                    _context.Comments.Add(comment);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = "Đã thêm bình luận thành công!";
+                    if (commentVM.EpisodeId.HasValue)
+                    {
+                        // Redirect to Watch page for episode-specific comments
+                        var episode = await _context.Episodes
+                            .FirstOrDefaultAsync(e => e.Id == commentVM.EpisodeId);
+                        if (episode != null)
+                        {
+                            return RedirectToAction(nameof(Watch), new { movieId = commentVM.MovieId, episodeNumber = episode.EpisodeNumber });
+                        }
+                    }
+                    // Redirect to Details page for movie-wide comments
+                    return RedirectToAction(nameof(Details), new { id = commentVM.MovieId });
+                }
+
+                TempData["ErrorMessage"] = "Vui lòng kiểm tra lại thông tin bình luận";
+                if (commentVM.EpisodeId.HasValue)
+                {
+                    var episode = await _context.Episodes
+                        .FirstOrDefaultAsync(e => e.Id == commentVM.EpisodeId);
+                    if (episode != null)
+                    {
+                        return RedirectToAction(nameof(Watch), new { movieId = commentVM.MovieId, episodeNumber = episode.EpisodeNumber });
+                    }
+                }
+                return RedirectToAction(nameof(Details), new { id = commentVM.MovieId });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error adding comment for movie ID: {MovieId}, episode ID: {EpisodeId}", commentVM.MovieId, commentVM.EpisodeId);
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi thêm bình luận";
+                if (commentVM.EpisodeId.HasValue)
+                {
+                    var episode = await _context.Episodes
+                        .FirstOrDefaultAsync(e => e.Id == commentVM.EpisodeId);
+                    if (episode != null)
+                    {
+                        return RedirectToAction(nameof(Watch), new { movieId = commentVM.MovieId, episodeNumber = episode.EpisodeNumber });
+                    }
+                }
+                return RedirectToAction(nameof(Details), new { id = commentVM.MovieId });
             }
         }
-        return RedirectToAction(nameof(Details), new { id = commentVM.MovieId });
-    }
-    catch (Exception ex)
-    {
-        _logger.LogError(ex, "Error adding comment for movie ID: {MovieId}, episode ID: {EpisodeId}", commentVM.MovieId, commentVM.EpisodeId);
-        TempData["ErrorMessage"] = "Đã xảy ra lỗi khi thêm bình luận";
-        if (commentVM.EpisodeId.HasValue)
-        {
-            var episode = await _context.Episodes
-                .FirstOrDefaultAsync(e => e.Id == commentVM.EpisodeId);
-            if (episode != null)
-            {
-                return RedirectToAction(nameof(Watch), new { movieId = commentVM.MovieId, episodeNumber = episode.EpisodeNumber });
-            }
-        }
-        return RedirectToAction(nameof(Details), new { id = commentVM.MovieId });
-    }
-}
         // // GET: Movie/Details/5
         //         public async Task<IActionResult> Details(int? id)
         //         {

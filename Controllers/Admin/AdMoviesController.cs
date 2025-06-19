@@ -146,6 +146,7 @@ namespace MovieWebsite.Areas.Admin.Controllers
 
             var movie = await _context.Movies
                 .Include(m => m.MovieGenres)
+                 .Include(m => m.Episodes) //lấy ds tập  phim
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (movie == null) return NotFound();
@@ -167,7 +168,10 @@ namespace MovieWebsite.Areas.Admin.Controllers
                 TrailerPath = movie.TrailerPath,
                 SelectedGenreIds = movie.MovieGenres.Select(mg => mg.GenreId).ToList(),
                 Countries = await _context.Countries.OrderBy(c => c.Name).ToListAsync(),
-                Genres = await _context.Genres.OrderBy(g => g.Name).ToListAsync()
+                Genres = await _context.Genres.OrderBy(g => g.Name).ToListAsync(),
+
+
+                ExistingEpisodes = movie.Episodes.ToList()
             };
 
             return View(viewModel);
@@ -281,6 +285,107 @@ namespace MovieWebsite.Areas.Admin.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Admin/AdMovies/CreateEpisode/5
+        public async Task<IActionResult> CreateEpisode(int? movieId)
+        {
+            if (movieId == null)
+            {
+                return NotFound();
+            }
+
+            // Tìm phim trong DB để lấy thông tin
+            var movie = await _context.Movies.FindAsync(movieId.Value);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            // Tìm số tập lớn nhất hiện có của phim này để gợi ý số tập tiếp theo
+            var lastEpisodeNumber = await _context.Episodes
+                                                  .Where(e => e.MovieId == movieId.Value)
+                                                  .MaxAsync(e => (int?)e.EpisodeNumber) ?? 0;
+
+            // Chuẩn bị ViewModel để gửi cho View
+            var viewModel = new EpisodeViewModel
+            {
+                MovieId = movie.Id,
+                MovieTitle = movie.Title, // Hiển thị tên phim trên form cho dễ nhận biết
+                EpisodeNumber = lastEpisodeNumber + 1, // Gợi ý số tập tiếp theo
+                ReleaseDate = DateTime.Today // Gợi ý ngày phát hành là hôm nay
+            };
+
+            return View(viewModel);
+        }
+        // Trong AdMoviesController.cs
+
+        // POST: Admin/AdMovies/CreateEpisode
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [RequestSizeLimit(524_288_000)] // Giới hạn 500MB cho mỗi tập phim
+        public async Task<IActionResult> CreateEpisode(EpisodeViewModel episodeVM)
+        {
+            // === VALIDATION BỔ SUNG ===
+            // 1. Kiểm tra xem file video có thực sự được gửi lên không
+            if (episodeVM.VideoFile == null || episodeVM.VideoFile.Length == 0)
+            {
+                ModelState.AddModelError("VideoFile", "Vui lòng tải lên file video cho tập phim.");
+            }
+
+            // 2. Kiểm tra xem số tập có bị trùng với tập đã có của phim này không
+            var episodeExists = await _context.Episodes
+                                              .AnyAsync(e => e.MovieId == episodeVM.MovieId && e.EpisodeNumber == episodeVM.EpisodeNumber);
+            if (episodeExists)
+            {
+                ModelState.AddModelError("EpisodeNumber", $"Tập số {episodeVM.EpisodeNumber} đã tồn tại cho phim này.");
+            }
+
+            // 3. Kiểm tra xem phim có tồn tại không
+            var movie = await _context.Movies.FindAsync(episodeVM.MovieId);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                // Xử lý upload file video
+                string videoPath = await ProcessFileUpload(episodeVM.VideoFile, "episode");
+
+                if (!string.IsNullOrEmpty(videoPath))
+                {
+                    // Tạo đối tượng Episode (Entity) từ ViewModel
+                    var episode = new Episode
+                    {
+                        MovieId = episodeVM.MovieId,
+                        EpisodeNumber = episodeVM.EpisodeNumber,
+                        Title = episodeVM.Title,
+                        Description = episodeVM.Description,
+                        Duration = episodeVM.Duration,
+                        ReleaseDate = episodeVM.ReleaseDate,
+                        VideoPath = videoPath // Lưu đường dẫn tương đối vào DB
+                    };
+
+                    _context.Episodes.Add(episode);
+                    await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = $"Đã thêm thành công tập {episode.EpisodeNumber} cho phim '{movie.Title}'.";
+                    // Chuyển hướng người dùng về trang Edit của phim để họ có thể xem danh sách tập hoặc thêm tập mới
+                    return RedirectToAction("Edit", new { id = episodeVM.MovieId });
+                }
+                else
+                {
+                    // Nếu upload file thất bại
+                    ModelState.AddModelError("", "Có lỗi xảy ra trong quá trình tải file lên. Vui lòng thử lại.");
+                }
+            }
+
+            // Nếu ModelState không hợp lệ, điền lại MovieTitle và trả về View cũ với các lỗi
+            _logger.LogWarning("Thêm tập phim thất bại do lỗi ModelState.");
+            // Cần gán lại MovieTitle vì trường này không được submit lên cùng form (nếu không dùng input hidden)
+            episodeVM.MovieTitle = movie.Title;
+            return View(episodeVM);
         }
     }
 }

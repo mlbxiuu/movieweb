@@ -135,6 +135,7 @@ D:\TaiLieu\LTWNC\LT\MovieWebsite 7\MovieWebsite\obj\Debug\net8.0\MovieWebsite.cs
 D:\TaiLieu\LTWNC\LT\MovieWebsite 7\MovieWebsite\obj\Debug\net8.0\MovieWebsite.MvcApplicationPartsAssemblyInfo.cache
 D:\TaiLieu\LTWNC\LT\MovieWebsite 7\MovieWebsite\obj\Debug\net8.0\MovieWebsite.RazorAssemblyInfo.cache
 D:\TaiLieu\LTWNC\LT\MovieWebsite 7\MovieWebsite\obj\Debug\net8.0\MovieWebsite.RazorAssemblyInfo.cs
+D:\TaiLieu\LTWNC\LT\MovieWebsite 7\MovieWebsite\obj\Debug\net8.0\MovieWebsite.sourcelink.json
 D:\TaiLieu\LTWNC\LT\MovieWebsite 7\MovieWebsite\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\TaiLieu\LTWNC\LT\MovieWebsite 7\MovieWebsite\obj\Debug\net8.0\scopedcss\bundle\MovieWebsite.styles.css
 D:\TaiLieu\LTWNC\LT\MovieWebsite 7\MovieWebsite\obj\Debug\net8.0\scopedcss\projectbundle\MovieWebsite.bundle.scp.css

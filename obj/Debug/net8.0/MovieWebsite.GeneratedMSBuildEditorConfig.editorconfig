@@ -48,12 +48,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRNb3ZpZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/TaiLieu/LTWNC/LT/MovieWebsite 7/MovieWebsite/Views/AdMovies/CreateEpisode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRNb3ZpZXNcQ3JlYXRlRXBpc29kZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/TaiLieu/LTWNC/LT/MovieWebsite 7/MovieWebsite/Views/AdMovies/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRNb3ZpZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TaiLieu/LTWNC/LT/MovieWebsite 7/MovieWebsite/Views/AdMovies/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRNb3ZpZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TaiLieu/LTWNC/LT/MovieWebsite 7/MovieWebsite/Views/AdMovies/EditEpisode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRNb3ZpZXNcRWRpdEVwaXNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TaiLieu/LTWNC/LT/MovieWebsite 7/MovieWebsite/Views/AdMovies/ListMovies.cshtml]
@@ -142,6 +150,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/TaiLieu/LTWNC/LT/MovieWebsite 7/MovieWebsite/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TaiLieu/LTWNC/LT/MovieWebsite 7/MovieWebsite/Views/WatchParty/Room.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F0Y2hQYXJ0eVxSb29tLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TaiLieu/LTWNC/LT/MovieWebsite 7/MovieWebsite/Views/_ViewImports.cshtml]

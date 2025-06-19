@@ -1,0 +1,76 @@
+@model EpisodeViewModel
+
+@{
+    ViewData["Title"] = "Thêm Tập Phim Mới";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Thêm Tập Phim Mới cho: <span class="text-primary">@Model.MovieTitle</span></h2>
+
+    <form asp-action="CreateEpisode" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        @* Trường ẩn để lưu MovieId, rất quan trọng để khi submit form, controller biết tập này thuộc phim nào *@
+        <input type="hidden" asp-for="MovieId" />
+        
+        @* Trường ẩn để gửi lại tên phim, giúp khi có lỗi validation, tên phim vẫn hiển thị lại *@
+        <input type="hidden" asp-for="MovieTitle" />
+
+        <div class="row">
+            <!-- Episode Number -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="EpisodeNumber" class="form-label">Số tập</label>
+                <input asp-for="EpisodeNumber" type="number" class="form-control" min="1" required />
+                <span asp-validation-for="EpisodeNumber" class="text-danger"></span>
+            </div>
+
+            <!-- Title -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Title" class="form-label">Tên tập phim</label>
+                <input asp-for="Title" class="form-control" required />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Mô tả (tùy chọn)</label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <!-- Duration -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Duration" class="form-label">Thời lượng (phút)</label>
+                <input asp-for="Duration" type="number" class="form-control" min="1" max="600" required />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+
+            <!-- Release Date -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="ReleaseDate" class="form-label">Ngày phát hành</label>
+                <input asp-for="ReleaseDate" type="date" class="form-control" required />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Video Upload -->
+        <div class="mb-3">
+            <label asp-for="VideoFile" class="form-label">Video tập phim (MP4, MOV, AVI)</label>
+            @* Xóa [Required] ở ViewModel, nhưng vẫn giữ 'required' ở HTML để validation phía client *@
+            <input asp-for="VideoFile" type="file" class="form-control" accept="video/mp4,video/quicktime,video/x-msvideo" required />
+            <span asp-validation-for="VideoFile" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Thêm Tập Phim</button>
+            @* Nút Hủy sẽ quay về trang chi tiết của phim đó (cần có action Details) hoặc trang danh sách *@
+            <a asp-action="Edit" asp-route-id="@Model.MovieId" class="btn btn-secondary">Quay lại</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

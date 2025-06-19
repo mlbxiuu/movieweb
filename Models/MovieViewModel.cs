@@ -40,7 +40,7 @@ public class MovieViewModel
     public bool IsCompleted { get; set; } = false;
 
     [Required(ErrorMessage = "Vui lòng chọn file poster")]
-    
+
     public IFormFile PosterFile { get; set; }
 
     public IFormFile TrailerFile { get; set; }
@@ -50,11 +50,15 @@ public class MovieViewModel
     public List<Genre> Genres { get; set; } = new List<Genre>();
 
     public string? PosterPath { get; set; } // Dùng khi chỉnh sửa
-    
+
     public string? TrailerPath { get; set; } // Dùng khi chỉnh sửa
 
     // New property for episode uploads
     public List<EpisodeViewModel> Episodes { get; set; } = new List<EpisodeViewModel>();
+    
+        // Dùng để hiển thị danh sách các tập đã có trên trang Edit
+    public List<Episode> ExistingEpisodes { get; set; } = new List<Episode>();
+
 }
 
 

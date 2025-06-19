@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\MovieWebsite.xtx6dbd3sz.bundle.scp.css"
     },
     {
-      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250608.log",
-      "PackagePath": "staticwebassets\\Logs\\app-20250608.log"
-    },
-    {
       "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250609.log",
       "PackagePath": "staticwebassets\\Logs\\app-20250609.log"
     },
@@ -33,8 +29,16 @@
       "PackagePath": "staticwebassets\\Logs\\app-20250617.log"
     },
     {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Logs\\app-20250618.log",
+      "PackagePath": "staticwebassets\\Logs\\app-20250618.log"
+    },
+    {
       "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\episode_1_98b0941e-9e66-42d9-b03f-317d1182446a.mp4",
       "PackagePath": "staticwebassets\\Uploads\\episode_1_98b0941e-9e66-42d9-b03f-317d1182446a.mp4"
+    },
+    {
+      "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\episode_96c1625e-0399-444c-a79a-668c30e021bc.mp4",
+      "PackagePath": "staticwebassets\\Uploads\\episode_96c1625e-0399-444c-a79a-668c30e021bc.mp4"
     },
     {
       "Id": "D:\\TaiLieu\\LTWNC\\LT\\MovieWebsite 7\\MovieWebsite\\wwwroot\\Uploads\\poster_46d6ecf1-2678-40de-a437-1438b30ecc97.jpg",

@@ -1,0 +1,156 @@
+@model WatchPartyRoom
+@{
+    ViewData["Title"] = "Xem chung: " + Model.Movie.Title;
+    // Gán CurrentMovieId để nút "Xem Cùng Nhau" vẫn hiển thị
+    ViewBag.CurrentMovieId = Model.MovieId;
+    // --- LOGIC LẤY VIDEO URL TỪ TẬP ĐẦU TIÊN ---
+    // Sắp xếp các tập phim theo số thứ tự và lấy tập đầu tiên
+    var firstEpisode = Model.Movie.Episodes?.OrderBy(e => e.EpisodeNumber).FirstOrDefault();
+
+    var videoUrl = firstEpisode?.VideoPath;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h3>@ViewData["Title"]</h3>
+            <p>Mã mời: <strong class="text-success">@Model.InviteCode</strong> (Gửi mã này cho bạn bè!)</p>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Cột video -->
+        <div class="col-md-8">
+
+            @if (!string.IsNullOrEmpty(videoUrl))
+            {
+
+                <video id="movie-player" src="@videoUrl" controls width="100%" style="background-color:black;"></video>
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    Rất tiếc, phim này hiện chưa có video để phát.
+                </div>
+            }
+        </div>
+        <!-- Cột chat -->
+        <div class="col-md-4">
+            <h4><i class="fas fa-comments"></i> Live Chat</h4>
+            <div id="chat-box"
+                style="height: 400px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; margin-bottom:10px;">
+            </div>
+            <div class="input-group">
+                <input type="text" id="message-input" class="form-control" placeholder="Nhập bình luận..." />
+                <button id="send-button" class="btn btn-primary">Gửi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script>
+        // Bọc toàn bộ code trong một hàm IIFE để tránh xung đột biến toàn cục
+        (function () {
+            // --- KHAI BÁO BIẾN VÀ TRẠNG THÁI ---
+            const chatBox = document.getElementById('chat-box');
+            const video = document.getElementById('movie-player');
+            const messageInput = document.getElementById('message-input');
+            const sendButton = document.getElementById('send-button');
+            const inviteCode = "@Model.InviteCode";
+            const userName = "User" + Math.floor(Math.random() * 1000);
+
+            // Mảng lưu trữ trạng thái của cuộc trò chuyện
+            let messages = [];
+
+            // Kiểm tra các element có tồn tại không
+            if (!chatBox || !messageInput || !sendButton) {
+                console.error("Không tìm thấy các thành phần của khung chat. Script sẽ không chạy.");
+                return;
+            }
+
+            // --- CÁC HÀM XỬ LÝ ---
+
+            // Hàm để render lại toàn bộ khung chat từ mảng `messages`
+            function renderChat() {
+                let chatHTML = '';
+                for (const msg of messages) {
+                    if (msg.type === 'message') {
+                        chatHTML += `<div><strong>${msg.user}:</strong> ${msg.message}</div>`;
+                    } else if (msg.type === 'notification') {
+                        chatHTML += `<div class="text-muted fst-italic">${msg.message}</div>`;
+                    }
+                }
+                chatBox.innerHTML = chatHTML;
+                // Luôn cuộn xuống cuối sau khi render
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+
+            // --- THIẾT LẬP KẾT NỐI SIGNALR ---
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/watchPartyHub")
+                .configureLogging(signalR.LogLevel.Information) // Bật log chi tiết để dễ debug
+                .build();
+
+            // Lắng nghe tin nhắn mới
+            connection.on("ReceiveMessage", (user, message) => {
+                console.log("Đã nhận tin nhắn:", message);
+                messages.push({ type: 'message', user: user, message: message });
+                renderChat();
+            });
+
+            // Lắng nghe thông báo người dùng tham gia
+            connection.on("UserJoined", (message) => {
+                console.log("Đã nhận thông báo:", message);
+                messages.push({ type: 'notification', message: message });
+                renderChat();
+            });
+
+            // Lắng nghe sự kiện đồng bộ video (nếu có video)
+            if (video) {
+                let isSyncing = false;
+                connection.on("ReceiveVideoState", (state, currentTime) => {
+                    isSyncing = true;
+                    video.currentTime = currentTime;
+                    if (state === "play" && video.paused) video.play();
+                    else if (state === "pause" && !video.paused) video.pause();
+                    setTimeout(() => { isSyncing = false; }, 200);
+                });
+
+                const sendState = () => {
+                    if (isSyncing) return;
+                    connection.invoke("SyncVideoState", inviteCode, video.paused ? "pause" : "play", video.currentTime);
+                };
+                video.onplay = sendState;
+                video.onpause = sendState;
+                video.onseeked = sendState;
+            }
+
+            // --- GẮN SỰ KIỆN VÀ BẮT ĐẦU KẾT NỐI ---
+
+            // Gửi tin nhắn khi nhấn nút
+            sendButton.addEventListener('click', () => {
+                const message = messageInput.value;
+                if (message && message.trim() !== '') {
+                    connection.invoke("SendMessage", inviteCode, userName, message)
+                        .catch(err => console.error("Lỗi khi gửi tin nhắn:", err));
+                    messageInput.value = '';
+                }
+            });
+
+            // Bắt đầu kết nối
+            async function start() {
+                try {
+                    await connection.start();
+                    console.log("SignalR Connected.");
+                    await connection.invoke("JoinRoom", inviteCode, userName);
+                } catch (err) {
+                    console.error("Lỗi kết nối SignalR, thử lại sau 5s...", err);
+                    setTimeout(start, 5000);
+                }
+            }
+            start();
+        })();
+    </script>
+}
